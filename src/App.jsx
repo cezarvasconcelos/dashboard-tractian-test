@@ -3,8 +3,9 @@ import Bell from "./components/icon/Bell";
 import Search from "./components/icon/Search";
 import ArrowDown from "./components/icon/ArrowDown";
 import api from "./services/api";
-import logoTractian from "./assets/tractianLogo.png";
 import db from "./database.json";
+
+const logoTractian = process.env.PUBLIC_URL + "/assets/tractianLogo.png";
 
 function App() {
   return (
