@@ -1,9 +1,11 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Bell from "./components/icon/Bell";
 import Search from "./components/icon/Search";
 import ArrowDown from "./components/icon/ArrowDown";
 import api from "./services/api";
 import db from "./database.json";
+import Header from "./components/Header";
+import { displayFlex, displayFlexCenter, displayFlexColumn } from "./css/styles";
 
 const logoTractian = process.env.PUBLIC_URL + "/assets/tractianLogo.png";
 
@@ -27,21 +29,7 @@ function App() {
         </div>
       </LeftContainer>
       <RightContainer>
-        <Header>
-          <HeaderLeft>
-            <h1>Overview</h1>
-          </HeaderLeft>
-          <HeaderRight>
-            <HeaderIconsContainer>
-              <Search />
-              <Bell />
-            </HeaderIconsContainer>
-            <HeaderUnit>
-              <h3>All</h3>
-              <ArrowDown />
-            </HeaderUnit>
-          </HeaderRight>
-        </Header>
+        <Header />
 
         <AssetsInfoContainer>
           <AssetsTotal>
@@ -70,20 +58,6 @@ function App() {
     </PageContainer>
   );
 }
-
-const displayFlex = css`
-  display: flex;
-`;
-const displayFlexColumn = css`
-  ${displayFlex};
-  flex-direction: column;
-`;
-
-const displayFlexCenter = css`
-  ${displayFlex};
-  justify-content: center;
-  align-items: center;
-`;
 
 const PageContainer = styled.div`
   ${displayFlex};
@@ -117,37 +91,6 @@ const NavLogo = styled.div`
   }
   h3 {
     display: none;
-  }
-`;
-const Header = styled.div`
-  ${displayFlex};
-  justify-content: space-between;
-  margin-top: 0;
-`;
-const HeaderLeft = styled.div`
-  ${displayFlexCenter};
-  h1 {
-    font-size: 1.2em;
-  }
-`;
-const HeaderRight = styled.div`
-  ${displayFlexCenter};
-`;
-
-const HeaderIconsContainer = styled.div`
-  flex-grow: 1;
-`;
-
-const HeaderUnit = styled.div`
-  ${displayFlexCenter};
-  flex-grow: 4;
-  h3 {
-    font-size: 1em;
-  }
-  img {
-    border-radius: 9999px;
-    width: 30px;
-    height: 30px;
   }
 `;
 
