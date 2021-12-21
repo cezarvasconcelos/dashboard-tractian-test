@@ -14,3 +14,8 @@ export const displayFlexCenter = css`
   justify-content: center;
   align-items: center;
 `;
+
+export const outlineInfo = css`
+  outline: 1px solid #aaaaaa;
+  border-radius: 5px;
+`;

@@ -1,9 +1,11 @@
-import { displayFlexCenter, displayFlexColumn } from "css/styles";
+import { displayFlexCenter, displayFlexColumn, outlineInfo } from "css/styles";
 import styled from "styled-components";
 
-const InfoTotal = ({ title, total }) => {
+//o className é passado aqui para que esse InfoTotal possa ser
+//extendido em outro styled-component
+const InfoTotal = ({ title, total, className }) => {
   return (
-    <TotalContainer>
+    <TotalContainer className={className}>
       <span className="title"> {title} </span>
       <span className="totals">{total}</span>
     </TotalContainer>
@@ -12,12 +14,14 @@ const InfoTotal = ({ title, total }) => {
 
 const TotalContainer = styled.div`
   ${displayFlexColumn};
+  ${outlineInfo};
   align-items: center;
   flex-grow: 1;
   justify-content: space-around;
-  outline: 1px solid red;
   height: 100%;
   max-height: 100px;
+  margin-bottom: 1em;
+
   span {
     line-height: 1.3rem;
     letter-spacing: 0px;
@@ -40,6 +44,8 @@ const TotalContainer = styled.div`
   }
   @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
     max-width: 200px;
+
+    margin: 0.4rem;
   }
 `;
 

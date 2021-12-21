@@ -77,6 +77,7 @@ const HeaderLeft = styled.div`
 const HeaderRight = styled.div`
   ${displayFlexCenter};
   height: 100%;
+  cursor: pointer;
 `;
 
 const HeaderUnit = styled.div`

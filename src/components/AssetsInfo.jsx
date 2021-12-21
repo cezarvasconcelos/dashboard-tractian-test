@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
+import { displayFlex, displayFlexCenter, displayFlexColumn, outlineInfo } from "css/styles";
 import InfoContainer from "./containers/InfoContainer";
 import InfoTotal from "./InfoTotal";
 
@@ -38,7 +38,7 @@ const AssetsInfo = ({ assets }) => {
 
   return (
     <AssetsContainer>
-      <InfoTotal title={"Ativos"} total={totalAssets} />
+      <Info title={"Ativos"} total={totalAssets} />
       <StatusContainer>
         <AssetsStatusTotal>
           <span className="alert">em alerta: {alertAssets}</span>
@@ -55,18 +55,20 @@ const AssetsInfo = ({ assets }) => {
 };
 
 const AssetsContainer = styled(InfoContainer)`
+  ${outlineInfo};
   justify-content: space-around;
   flex-basis: 100%;
   @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
     flex-basis: 300px;
   }
 `;
-
+const Info = styled(InfoTotal)`
+  outline: 0px;
+`;
 const StatusContainer = styled.div`
   ${displayFlexCenter};
   flex-wrap: wrap;
   height: 100%;
-  outline: 1px solid blue;
   flex-basis: 160px;
 `;
 

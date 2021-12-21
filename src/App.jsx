@@ -84,7 +84,7 @@ const RightContainer = styled.div`
   ${displayFlexCenter};
   ${displayFlexColumn};
   flex-grow: 2;
-  background-color: #d4d4d4;
+  /* background-color: #d4d4d4; */
 `;
 const NavLogo = styled.div`
   ${displayFlexCenter}
