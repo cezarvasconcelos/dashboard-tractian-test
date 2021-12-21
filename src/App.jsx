@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import db from "./database.json";
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
+import styled, { ThemeProvider } from "styled-components";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import db from "./database.json";
+import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
+import { theme } from "css/theme";
 import { Header, AssetsInfo, UsersInfo, UnitsInfo, GeneralChart } from "components";
 
 const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
@@ -33,31 +34,33 @@ function App() {
   }, [unitSelected]);
   return (
     <PageContainer>
-      <LeftContainer>
-        <div className="navBar">
-          <NavLogo>
-            <img src={logoTractian} alt="logo" />
-            <h3>Tractian Dashboard</h3>
-          </NavLogo>
-          <div className="menu">
-            <ul>
-              <li>Overview</li>
-              <li>Assets</li>
-              <li>Users</li>
-              <li>Units</li>
-            </ul>
+      <ThemeProvider theme={theme}>
+        <LeftContainer>
+          <div className="navBar">
+            <NavLogo>
+              <img src={logoTractian} alt="logo" />
+              <h3>Tractian Dashboard</h3>
+            </NavLogo>
+            <div className="menu">
+              <ul>
+                <li>Overview</li>
+                <li>Assets</li>
+                <li>Users</li>
+                <li>Units</li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </LeftContainer>
-      <RightContainer>
-        <OverView>
-          <Header units={units} />
-          <AssetsInfo assets={unitAssets} />
-          <UsersInfo users={unitUsers} />
-          <UnitsInfo units={units} />
-          <GeneralChart info={unitSelected} />
-        </OverView>
-      </RightContainer>
+        </LeftContainer>
+        <RightContainer>
+          <OverView>
+            <Header units={units} />
+            <AssetsInfo assets={unitAssets} />
+            <UsersInfo users={unitUsers} />
+            <UnitsInfo units={units} />
+            <GeneralChart info={unitSelected} />
+          </OverView>
+        </RightContainer>
+      </ThemeProvider>
     </PageContainer>
   );
 }
