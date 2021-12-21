@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { displayFlex, displayFlexCenter } from "../css/styles";
+import { displayFlexCenter } from "css/styles";
 import ArrowDown from "./icon/ArrowDown";
-import Bell from "./icon/Bell";
-import Search from "./icon/Search";
-import { selectUnit } from "../redux/features/unitSlice";
+import { selectUnit } from "redux/features/unitSlice";
 
 const Header = ({ units }) => {
   const [isOpen, setIsOpen] = useState(false);

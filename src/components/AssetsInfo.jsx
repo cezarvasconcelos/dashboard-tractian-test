@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { displayFlexCenter } from "../css/styles";
+import { displayFlexCenter } from "css/styles";
 
 const AssetsInfo = ({ assets }) => {
   const [totalAssets, setTotalAssets] = useState(0);

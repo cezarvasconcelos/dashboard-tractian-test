@@ -1,13 +1,9 @@
 import styled from "styled-components";
 import db from "./database.json";
-import Header from "./components/Header";
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "./css/styles";
+import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import AssetsInfo from "./components/AssetsInfo";
-import UsersInfo from "./components/UsersInfo";
-import UnitsInfo from "./components/UnitsInfo";
-import GeneralChart from "./components/GeneralChart";
+import { Header, AssetsInfo, UsersInfo, UnitsInfo, GeneralChart } from "components";
 
 const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
@@ -54,11 +50,13 @@ function App() {
         </div>
       </LeftContainer>
       <RightContainer>
-        <Header units={units} />
-        <AssetsInfo assets={unitAssets} />
-        <UsersInfo users={unitUsers} />
-        <UnitsInfo units={units} />
-        <GeneralChart info={unitSelected} />
+        <OverView>
+          <Header units={units} />
+          <AssetsInfo assets={unitAssets} />
+          <UsersInfo users={unitUsers} />
+          <UnitsInfo units={units} />
+          <GeneralChart info={unitSelected} />
+        </OverView>
       </RightContainer>
     </PageContainer>
   );
@@ -98,6 +96,13 @@ const NavLogo = styled.div`
   h3 {
     display: none;
   }
+`;
+
+const OverView = styled.div`
+  ${displayFlexCenter};
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
 `;
 
 export default App;

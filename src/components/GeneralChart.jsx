@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { displayFlexCenter } from "../css/styles";
+import { displayFlexCenter } from "css/styles";
 
 const GeneralChart = ({ info }) => {
   return (
