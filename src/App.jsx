@@ -6,10 +6,18 @@ import api from "./services/api";
 import db from "./database.json";
 import Header from "./components/Header";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "./css/styles";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const logoTractian = process.env.PUBLIC_URL + "/assets/tractianLogo.png";
+const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
 function App() {
+  const [units, setUnits] = useState(db.units);
+  // const [users, setUsers] = useState(db.users);
+  // const [assets, setAssets] = useState(db.assets);
+  // const [companies, setCompanies] = useState(db.companies);
+  const unitSelected = useSelector((state) => state.unit.unitId);
+
   return (
     <PageContainer>
       <LeftContainer>
@@ -29,11 +37,11 @@ function App() {
         </div>
       </LeftContainer>
       <RightContainer>
-        <Header />
+        <Header units={units} />
 
         <AssetsInfoContainer>
           <AssetsTotal>
-            <span> Assets </span> 30
+            <span> Assets </span>
           </AssetsTotal>
           <AssetsStatus>
             <AssetsStatusTotal>alert 132</AssetsStatusTotal>
@@ -52,7 +60,7 @@ function App() {
         </UnitsInfoContainer>
 
         <ChartContainer>
-          <span>this could be a chart</span>
+          <span>this could be a chart {unitSelected}</span>
         </ChartContainer>
       </RightContainer>
     </PageContainer>
@@ -82,12 +90,13 @@ const RightContainer = styled.div`
 `;
 const NavLogo = styled.div`
   ${displayFlexCenter}
-  padding-top: 1.2em;
+  padding-top: 1.3em;
   img {
-    outline: 2px solid #185ef6;
+    border: 5px solid #185ef6;
+    outline: 2px solid #3875faa7;
     border-radius: 5px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
   }
   h3 {
     display: none;
