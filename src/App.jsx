@@ -69,7 +69,7 @@ const PageContainer = styled.div`
   ${displayFlex};
   justify-content: space-between;
   width: 100%;
-  min-width: 280px;
+  min-width: 310px;
   height: 100vh;
 `;
 
@@ -77,14 +77,14 @@ const LeftContainer = styled.div`
   ${displayFlexColumn};
   min-width: 60px;
   max-width: 300px;
-  border-right: 1px solid blue;
+  background: #bebebe;
 `;
 
 const RightContainer = styled.div`
   ${displayFlexCenter};
   ${displayFlexColumn};
   flex-grow: 2;
-  background-color: red;
+  background-color: #f6f7e5;
 `;
 const NavLogo = styled.div`
   ${displayFlexCenter}

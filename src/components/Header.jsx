@@ -9,7 +9,7 @@ const Header = ({ units }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   //coloca um objeto fictício para representar o All
-  const [options, setOptions] = useState([{ id: 0, name: "Todos", companyId: 0 }, ...units]);
+  const [options] = useState([{ id: 0, name: "Todos", companyId: 0 }, ...units]);
   const toggling = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const Header = ({ units }) => {
   return (
     <HeaderContainer>
       <HeaderLeft>
-        <h1>Overview</h1>
+        <h1>Unidades</h1>
       </HeaderLeft>
       <HeaderRight>
         <HeaderUnit onClick={toggling}>
@@ -59,7 +59,18 @@ const HeaderContainer = styled.div`
 const HeaderLeft = styled.div`
   ${displayFlexCenter};
   h1 {
-    font-size: 1.3em;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+  @media (min-width: ${(props) => props.theme.sizes.breakPointSmall}) {
+    h1 {
+      font-size: 1.6rem;
+    }
+  }
+  @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+    h1 {
+      font-size: 2rem;
+    }
   }
 `;
 const HeaderRight = styled.div`
@@ -74,13 +85,23 @@ const HeaderUnit = styled.div`
 `;
 
 const DropDownContainer = styled.div`
-  width: 150px;
-  margin: 0 1em;
+  width: 120px;
+  margin: 0 0.4rem;
+  @media (min-width: ${(props) => props.theme.sizes.breakPointSmall}) {
+    width: 170px;
+  @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+   width: 250px;
+  }
 `;
 
 const DropDownHeader = styled.div`
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 1rem;
+  @media (min-width: ${(props) => props.theme.sizes.breakPointSmall}) {
+    font-size: 1.3rem;
+  @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+   font-size: 1.5rem;
+  }
 `;
 
 const DropDownListContainer = styled.div`
@@ -90,15 +111,18 @@ const DropDownListContainer = styled.div`
 const DropDownList = styled.ul`
   background: #ffffff;
   position: absolute;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: 1.3rem;
-  font-weight: 500;
+  right: 0;
+  font-size: 1rem;
+  font-weight:500;
+  @media (min-width: ${(props) => props.theme.sizes.breakPointSmall}) {
+    font-size: 1.3rem;
+  @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+   font-size: 1.5rem;
+  }
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 0.3em;
+  margin-bottom: 0.3rem;
 `;
 
 export default Header;
