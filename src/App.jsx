@@ -9,6 +9,9 @@ import { displayFlex, displayFlexCenter, displayFlexColumn } from "./css/styles"
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import AssetsInfo from "./components/AssetsInfo";
+import UsersInfo from "./components/UsersInfo";
+import UnitsInfo from "./components/UnitsInfo";
+import GeneralChart from "./components/GeneralChart";
 
 const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
@@ -39,19 +42,10 @@ function App() {
       </LeftContainer>
       <RightContainer>
         <Header units={units} />
-
         <AssetsInfo />
-
-        <UsersInfoContainer />
-
-        <UnitsInfoContainer>
-          <span>Units</span>
-          <span>2</span>
-        </UnitsInfoContainer>
-
-        <ChartContainer>
-          <span>this could be a chart {unitSelected}</span>
-        </ChartContainer>
+        <UsersInfo />
+        <UnitsInfo />
+        <GeneralChart info={unitSelected} />
       </RightContainer>
     </PageContainer>
   );
@@ -93,11 +87,4 @@ const NavLogo = styled.div`
   }
 `;
 
-const ChartContainer = styled.div`
-  ${displayFlexCenter};
-  width: 90%;
-  height: 100px;
-  flex-grow: 1;
-  outline: 1px solid black;
-`;
 export default App;
