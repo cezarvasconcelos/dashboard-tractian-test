@@ -9,22 +9,27 @@ const AssetsInfo = ({ assets }) => {
   const [operationAssets, setOperationAssets] = useState(0);
 
   useEffect(() => {
-    setTotalAssets(assets.length);
     //percorre e seta os totalizadores dos assets por status
+    let [tAlert, tDown, tOperation] = [0, 0, 0];
+
     assets.forEach((asset) => {
       switch (asset.status) {
         case "inAlert":
-          setAlertAssets(alertAssets + 1);
+          tAlert++;
           break;
         case "inDowntime":
-          setDownTimeAssets(downTimeAssets + 1);
+          tDown++;
           break;
         case "inOperation":
-          setOperationAssets(operationAssets + 1);
+          tOperation++;
           break;
         default:
           break;
       }
+      setTotalAssets(assets.length);
+      setAlertAssets(tAlert);
+      setDownTimeAssets(tDown);
+      setOperationAssets(tOperation);
     });
     return () => {};
   }, [assets]);

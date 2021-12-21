@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { displayFlex, displayFlexCenter } from "../css/styles";
+import { displayFlexCenter } from "../css/styles";
 
 const UnitsInfo = ({ units }) => {
   const [totalUnits, setTotalUnits] = useState(0);

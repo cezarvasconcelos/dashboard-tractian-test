@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import Bell from "./components/icon/Bell";
-import Search from "./components/icon/Search";
-import ArrowDown from "./components/icon/ArrowDown";
-import api from "./services/api";
 import db from "./database.json";
 import Header from "./components/Header";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "./css/styles";
@@ -17,9 +13,9 @@ const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
 function App() {
   const [units, setUnits] = useState(db.units);
-  const [users, setUsers] = useState(db.users);
-  const [assets, setAssets] = useState(db.assets);
-  const [companies, setCompanies] = useState(db.companies);
+  // const [users, setUsers] = useState(db.users);
+  // const [assets, setAssets] = useState(db.assets);
+  // const [companies, setCompanies] = useState(db.companies);
   const [unitAssets, setUnitAssets] = useState([]);
   const [unitUsers, setUnitUsers] = useState([]);
   const unitSelected = useSelector((state) => state.unit.unitId);
