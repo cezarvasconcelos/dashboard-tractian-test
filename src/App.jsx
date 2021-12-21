@@ -42,10 +42,8 @@ function App() {
 
         <AssetsInfo />
 
-        <UsersInfoContainer>
-          <span>Users</span>
-          <span>20</span>
-        </UsersInfoContainer>
+        <UsersInfoContainer />
+
         <UnitsInfoContainer>
           <span>Units</span>
           <span>2</span>
@@ -93,20 +91,6 @@ const NavLogo = styled.div`
   h3 {
     display: none;
   }
-`;
-const UsersInfoContainer = styled.div`
-  ${displayFlexCenter};
-  width: 90%;
-  height: 100px;
-  flex-grow: 1;
-  outline: 1px solid black;
-`;
-const UnitsInfoContainer = styled.div`
-  ${displayFlexCenter};
-  width: 90%;
-  height: 100px;
-  flex-grow: 1;
-  outline: 1px solid black;
 `;
 
 const ChartContainer = styled.div`
