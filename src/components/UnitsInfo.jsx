@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { displayFlex, displayFlexCenter } from "../css/styles";
 
-const UsersInfo = ({ users }) => {
+const UnitsInfo = ({ users }) => {
   return (
-    <UsersInfoContainer>
+    <UnitsInfoContainer>
       <span>Users</span>
       <span>20</span>
-    </UsersInfoContainer>
+    </UnitsInfoContainer>
   );
 };
 
-const UsersInfoContainer = styled.div`
+const UnitsInfoContainer = styled.div`
   ${displayFlexCenter};
   width: 90%;
   height: 100px;
@@ -18,4 +18,4 @@ const UsersInfoContainer = styled.div`
   outline: 1px solid black;
 `;
 
-export default UsersInfo;
+export default UnitsInfo;
