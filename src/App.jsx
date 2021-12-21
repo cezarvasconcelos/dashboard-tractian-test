@@ -4,9 +4,7 @@ import { useSelector } from "react-redux";
 import db from "./database.json";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import { theme } from "css/theme";
-import { Header, AssetsInfo, UsersInfo, UnitsInfo, GeneralChart } from "components";
-
-const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
+import { Header, AssetsInfo, UsersInfo, UnitsInfo, GeneralChart, Navbar } from "components";
 
 function App() {
   const [units, setUnits] = useState(db.units);
@@ -36,20 +34,7 @@ function App() {
     <PageContainer>
       <ThemeProvider theme={theme}>
         <LeftContainer>
-          <div className="navBar">
-            <NavLogo>
-              <img src={logoTractian} alt="logo" />
-              <h3>Tractian Dashboard</h3>
-            </NavLogo>
-            <div className="menu">
-              <ul>
-                <li>Overview</li>
-                <li>Assets</li>
-                <li>Users</li>
-                <li>Units</li>
-              </ul>
-            </div>
-          </div>
+          <Navbar />
         </LeftContainer>
         <RightContainer>
           <Header units={units} />
@@ -85,20 +70,6 @@ const RightContainer = styled.div`
   ${displayFlexColumn};
   flex-grow: 2;
   /* background-color: #d4d4d4; */
-`;
-const NavLogo = styled.div`
-  ${displayFlexCenter}
-  padding-top: 1.3em;
-  img {
-    border: 5px solid #185ef6;
-    outline: 2px solid #3875faa7;
-    border-radius: 5px;
-    width: 50px;
-    height: 50px;
-  }
-  h3 {
-    display: none;
-  }
 `;
 
 const OverView = styled.div`
