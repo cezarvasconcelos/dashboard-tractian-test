@@ -90,7 +90,7 @@ const DropDownListContainer = styled.div`
 `;
 
 const DropDownList = styled.ul`
-  background: #ffff;
+  background: #ffffff;
   position: absolute;
   padding: 0;
   margin: 0;
