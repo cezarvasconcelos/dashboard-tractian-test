@@ -1,20 +1,15 @@
 import styled from "styled-components";
 import { displayFlexCenter } from "css/styles";
+import InfoTotal from "./InfoTotal";
 
 const GeneralChart = ({ info }) => {
-  return (
-    <ChartContainer>
-      <span>this could be a chart {info}</span>
-    </ChartContainer>
-  );
+  return <TestComponent />;
 };
 
-const ChartContainer = styled.div`
-  ${displayFlexCenter};
-  width: 90%;
-  height: 100px;
-  flex-grow: 1;
-  outline: 1px solid black;
+const TestComponent = styled.div`
+  outline: 1px solid red;
+  height: 300px;
+  width: 100%;
 `;
 
 export default GeneralChart;

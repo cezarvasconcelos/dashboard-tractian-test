@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { displayFlexCenter } from "css/styles";
+import InfoTotal from "./InfoTotal";
 
 const UnitsInfo = ({ units }) => {
   const [totalUnits, setTotalUnits] = useState(0);
@@ -9,20 +8,7 @@ const UnitsInfo = ({ units }) => {
   useEffect(() => {
     setTotalUnits(units.length);
   }, [units]);
-  return (
-    <UnitsInfoContainer>
-      <span>Units</span>
-      <span>{totalUnits}</span>
-    </UnitsInfoContainer>
-  );
+  return <InfoTotal title={"Unidades"} total={totalUnits} />;
 };
-
-const UnitsInfoContainer = styled.div`
-  ${displayFlexCenter};
-  width: 90%;
-  height: 100px;
-  flex-grow: 1;
-  outline: 1px solid black;
-`;
 
 export default UnitsInfo;

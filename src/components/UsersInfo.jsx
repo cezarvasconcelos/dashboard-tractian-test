@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { displayFlexCenter } from "../css/styles";
+import InfoTotal from "./InfoTotal";
 
 const UsersInfo = ({ users }) => {
   const [totalUsers, setTotalUsers] = useState(0);
@@ -9,20 +8,7 @@ const UsersInfo = ({ users }) => {
   useEffect(() => {
     setTotalUsers(users.length);
   }, [users]);
-  return (
-    <UsersInfoContainer>
-      <span>Users</span>
-      <span>{totalUsers}</span>
-    </UsersInfoContainer>
-  );
+  return <InfoTotal title={"Usuários"} total={totalUsers} />;
 };
-
-const UsersInfoContainer = styled.div`
-  ${displayFlexCenter};
-  width: 90%;
-  height: 100px;
-  flex-grow: 1;
-  outline: 1px solid black;
-`;
 
 export default UsersInfo;

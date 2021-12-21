@@ -52,8 +52,8 @@ function App() {
           </div>
         </LeftContainer>
         <RightContainer>
+          <Header units={units} />
           <OverView>
-            <Header units={units} />
             <AssetsInfo assets={unitAssets} />
             <UsersInfo users={unitUsers} />
             <UnitsInfo units={units} />
@@ -77,14 +77,14 @@ const LeftContainer = styled.div`
   ${displayFlexColumn};
   min-width: 60px;
   max-width: 300px;
-  background: #bebebe;
+  background: #b9b8b8;
 `;
 
 const RightContainer = styled.div`
   ${displayFlexCenter};
   ${displayFlexColumn};
   flex-grow: 2;
-  background-color: #f6f7e5;
+  background-color: #d4d4d4;
 `;
 const NavLogo = styled.div`
   ${displayFlexCenter}
@@ -103,9 +103,9 @@ const NavLogo = styled.div`
 
 const OverView = styled.div`
   ${displayFlexCenter};
-  flex-direction: column;
+  flex-wrap: wrap;
   height: 100vh;
-  width: 100%;
+  width: 90%;
 `;
 
 export default App;

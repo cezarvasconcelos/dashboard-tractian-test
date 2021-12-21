@@ -1,7 +1,7 @@
 import { displayFlexCenter, displayFlexColumn } from "css/styles";
 import styled from "styled-components";
 
-const Infototal = ({ title, total }) => {
+const InfoTotal = ({ title, total }) => {
   return (
     <TotalContainer>
       <span className="title"> {title} </span>
@@ -17,6 +17,7 @@ const TotalContainer = styled.div`
   justify-content: space-around;
   outline: 1px solid red;
   height: 100%;
+  max-height: 100px;
   span {
     line-height: 1.3rem;
     letter-spacing: 0px;
@@ -37,6 +38,9 @@ const TotalContainer = styled.div`
     border-radius: 9999px;
     font-size: 2rem;
   }
+  @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+    max-width: 200px;
+  }
 `;
 
-export default Infototal;
+export default InfoTotal;

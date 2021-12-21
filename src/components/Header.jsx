@@ -24,7 +24,7 @@ const Header = ({ units }) => {
   return (
     <HeaderContainer>
       <HeaderLeft>
-        <h1>Unidades</h1>
+        <h1>Geral</h1>
       </HeaderLeft>
       <HeaderRight>
         <HeaderUnit onClick={toggling}>
@@ -55,6 +55,7 @@ const HeaderContainer = styled.div`
   width: 90%;
   padding: 1.3em 0;
   height: 60px;
+  margin-bottom: 2em;
 `;
 const HeaderLeft = styled.div`
   ${displayFlexCenter};
