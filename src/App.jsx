@@ -8,13 +8,14 @@ import Header from "./components/Header";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "./css/styles";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import AssetsInfo from "./components/AssetsInfo";
 
 const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
 function App() {
   const [units, setUnits] = useState(db.units);
   // const [users, setUsers] = useState(db.users);
-  // const [assets, setAssets] = useState(db.assets);
+  const [assets, setAssets] = useState(db.assets);
   // const [companies, setCompanies] = useState(db.companies);
   const unitSelected = useSelector((state) => state.unit.unitId);
 
@@ -39,16 +40,7 @@ function App() {
       <RightContainer>
         <Header units={units} />
 
-        <AssetsInfoContainer>
-          <AssetsTotal>
-            <span> Assets </span>
-          </AssetsTotal>
-          <AssetsStatus>
-            <AssetsStatusTotal>alert 132</AssetsStatusTotal>
-            <AssetsStatusTotal>operation 132</AssetsStatusTotal>
-            <AssetsStatusTotal>downtime 132</AssetsStatusTotal>
-          </AssetsStatus>
-        </AssetsInfoContainer>
+        <AssetsInfo />
 
         <UsersInfoContainer>
           <span>Users</span>
@@ -101,26 +93,6 @@ const NavLogo = styled.div`
   h3 {
     display: none;
   }
-`;
-
-const AssetsInfoContainer = styled.div`
-  ${displayFlexCenter};
-  outline: 1px solid black;
-  width: 90%;
-  height: 100px;
-  flex-grow: 1;
-`;
-
-const AssetsTotal = styled.div`
-  ${displayFlexCenter};
-`;
-
-const AssetsStatus = styled.div`
-  ${displayFlexCenter};
-`;
-
-const AssetsStatusTotal = styled.div`
-  ${displayFlexCenter};
 `;
 const UsersInfoContainer = styled.div`
   ${displayFlexCenter};
