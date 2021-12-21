@@ -6,7 +6,7 @@ import api from "./services/api";
 import db from "./database.json";
 import Header from "./components/Header";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "./css/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AssetsInfo from "./components/AssetsInfo";
 import UsersInfo from "./components/UsersInfo";
@@ -17,11 +17,28 @@ const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
 function App() {
   const [units, setUnits] = useState(db.units);
-  // const [users, setUsers] = useState(db.users);
+  const [users, setUsers] = useState(db.users);
   const [assets, setAssets] = useState(db.assets);
-  // const [companies, setCompanies] = useState(db.companies);
+  const [companies, setCompanies] = useState(db.companies);
+  const [unitAssets, setUnitAssets] = useState([]);
+  const [unitUsers, setUnitUsers] = useState([]);
   const unitSelected = useSelector((state) => state.unit.unitId);
 
+  useEffect(() => {
+    let assetsFiltered = [];
+    assetsFiltered = db.assets.filter((asset) => {
+      return asset.unitId === unitSelected;
+    });
+    setUnitAssets(assetsFiltered);
+
+    let usersFiltered = [];
+    usersFiltered = db.users.filter((user) => {
+      return user.unitId === unitSelected;
+    });
+    setUnitUsers(usersFiltered);
+    console.log(assetsFiltered);
+    console.log(usersFiltered);
+  }, [unitSelected]);
   return (
     <PageContainer>
       <LeftContainer>
@@ -42,9 +59,9 @@ function App() {
       </LeftContainer>
       <RightContainer>
         <Header units={units} />
-        <AssetsInfo />
-        <UsersInfo />
-        <UnitsInfo />
+        <AssetsInfo assets={unitAssets} />
+        <UsersInfo users={unitUsers} />
+        <UnitsInfo units={units} />
         <GeneralChart info={unitSelected} />
       </RightContainer>
     </PageContainer>

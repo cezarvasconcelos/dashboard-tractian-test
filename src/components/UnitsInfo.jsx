@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { displayFlex, displayFlexCenter } from "../css/styles";
 
-const UnitsInfo = ({ users }) => {
+const UnitsInfo = ({ units }) => {
+  const [totalUnits, setTotalUnits] = useState(0);
+
+  console.log(units);
+  useEffect(() => {
+    setTotalUnits(units.length);
+  }, [units]);
   return (
     <UnitsInfoContainer>
-      <span>Users</span>
-      <span>20</span>
+      <span>Units</span>
+      <span>{totalUnits}</span>
     </UnitsInfoContainer>
   );
 };

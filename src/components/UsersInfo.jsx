@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { displayFlex, displayFlexCenter } from "../css/styles";
 
 const UsersInfo = ({ users }) => {
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  console.log(users);
+  useEffect(() => {
+    setTotalUsers(users.length);
+  }, [users]);
   return (
     <UsersInfoContainer>
       <span>Users</span>
-      <span>20</span>
+      <span>{totalUsers}</span>
     </UsersInfoContainer>
   );
 };
