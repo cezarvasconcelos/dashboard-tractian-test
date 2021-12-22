@@ -2,21 +2,22 @@ import ViewContainer from "components/containers/ViewContainer";
 import { AssetCard } from "components";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Modal from "components/Modal";
 
 const Assets = ({ assets }) => {
-  const [activeAssets, setActiveAssets] = useState(assets);
+  const [assetsList, setAssetsList] = useState(assets);
   const [filter, setFilter] = useState("");
   // console.log(assets);
 
   useEffect(() => {
-    setActiveAssets(assets);
+    setAssetsList(assets);
   }, [assets]);
   return (
     <ViewContainer>
       <InputSearch placeholder={"search"} />
-      {activeAssets.map((el) => (
-        <AssetCard key={el.id} asset={el} />
-      ))}
+      {assetsList.map((el) => {
+        return <AssetCard key={el.id} asset={el} />;
+      })}
     </ViewContainer>
   );
 };

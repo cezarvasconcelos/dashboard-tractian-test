@@ -3,6 +3,11 @@ import { useCallback, useEffect, useRef } from "react";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 
 const Modal = ({ showModal, setShowModal, children }) => {
+  // para utilizar o modal, é necessário que seja setado o state desse modal
+  // no componente pai, pois ele quem terá o controle se deve abrir ou fechar
+  // #TODO :
+  // deve haver uma implementação melhor para lidar com esse estado
+
   const modalRef = useRef();
 
   const closeModal = (e) => {

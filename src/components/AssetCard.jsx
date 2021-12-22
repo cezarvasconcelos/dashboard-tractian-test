@@ -1,40 +1,40 @@
-import { displayFlexCenter, displayFlexColumn } from "css/styles";
+import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import AssetDetails from "./AssetDetails";
 import AssetStatus from "./AssetStatus";
-import { PlusIcon } from "./icon";
-
-// {
-//       "id": 1,
-//       "sensors": ["GSJ1535"],
-//       "model": "motor",
-//       "status": "inAlert",
-//       "healthscore": 70,
-//       "name": "Motor H13D-1",
-//       "image": "https://tractian-img.s3.amazonaws.com/6d5028682016cb43d02b857d4f1384ae.jpeg",
-//       "specifications": {
-//         "maxTemp": 80
-//       },
-//       "metrics": {
-//         "totalCollectsUptime": 7516,
-//         "totalUptime": 1419.620084999977,
-//         "lastUptimeAt": "2021-02-16T16:17:50.180Z"
-//       },
-//       "unitId": 1,
-//       "companyId": 1
-//     },
+import Modal from "./Modal";
 
 const AssetCard = ({ asset }) => {
+  const openModal = (set) => {
+    set((prev) => !prev);
+  };
+  // console.log(asset);
+  const [showModal, setShowModal] = useState(false);
+  // const [showModal2, setShowModal2] = useState(false);
+
   return (
-    <AssetCardContainer>
-      <AssetName>{asset.name}</AssetName>
-      <img src={asset.image} alt={"image of " + asset.model} />
-      <AssetStatus status={asset.status} />
-      <HealthScore>Saúde {asset.healthscore}%</HealthScore>
-      <MoreInfo>
-        <PlusIcon fill={"red;"} />
-      </MoreInfo>
-    </AssetCardContainer>
+    <>
+      <AssetCardContainer>
+        <AssetName>{asset.name}</AssetName>
+        <img src={asset.image} alt={"image of " + asset.model} />
+        <AssetStatus status={asset.status} />
+        <HealthScore>Saúde {asset.healthscore}%</HealthScore>
+        <MoreInfo>
+          <button
+            onClick={() => {
+              openModal(setShowModal);
+            }}
+          >
+            Info
+          </button>
+        </MoreInfo>
+      </AssetCardContainer>
+      <Modal showModal={showModal} setShowModal={setShowModal}>
+        <AssetDetails asset={asset} />
+      </Modal>
+    </>
   );
 };
 
