@@ -14,25 +14,24 @@ const Navbar = () => {
         <img src={logoTractian} alt="logo" />
         <h3>Tractian Dashboard</h3>
       </NavLogo>
+
       <Menu>
-        <MenuList>
-          <LinkStyled to="/">
-            <OverviewIcon />
-            <span>Overview</span>
-          </LinkStyled>
-          <LinkStyled to="/assets">
-            <AssetsIcon />
-            <span className={"link"}>Assets</span>
-          </LinkStyled>
-          <LinkStyled to="/users">
-            <UserIcon />
-            <span className={"link"}>Users</span>
-          </LinkStyled>
-          <LinkStyled to="/units">
-            <UnitsIcon />
-            <span className={"link"}>Units</span>
-          </LinkStyled>
-        </MenuList>
+        <LinkStyled to="/">
+          <OverviewIcon />
+          <span>Overview</span>
+        </LinkStyled>
+        <LinkStyled to="/assets">
+          <AssetsIcon />
+          <span className={"link"}>Assets</span>
+        </LinkStyled>
+        <LinkStyled to="/users">
+          <UserIcon />
+          <span className={"link"}>Users</span>
+        </LinkStyled>
+        <LinkStyled to="/units">
+          <UnitsIcon />
+          <span className={"link"}>Units</span>
+        </LinkStyled>
       </Menu>
     </NavContainer>
   );
@@ -98,6 +97,5 @@ const NavLogo = styled.div`
 `;
 
 const Menu = styled.div``;
-const MenuList = styled.div``;
 
 export default Navbar;

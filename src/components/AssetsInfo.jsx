@@ -44,7 +44,7 @@ const AssetsInfo = ({ assets }) => {
           <span className="alert">em alerta: {alertAssets}</span>
         </AssetsStatusTotal>
         <AssetsStatusTotal>
-          <span className="operation">operando: {operationAssets}</span>
+          <span className="operation">operacional: {operationAssets}</span>
         </AssetsStatusTotal>
         <AssetsStatusTotal>
           <span className="downtime">interrompido: {downTimeAssets}</span>

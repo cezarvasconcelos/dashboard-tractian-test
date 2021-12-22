@@ -4,7 +4,7 @@ import InfoTotal from "./InfoTotal";
 const UsersInfo = ({ users }) => {
   const [totalUsers, setTotalUsers] = useState(0);
 
-  console.log(users);
+  // console.log(users);
   useEffect(() => {
     setTotalUsers(users.length);
   }, [users]);

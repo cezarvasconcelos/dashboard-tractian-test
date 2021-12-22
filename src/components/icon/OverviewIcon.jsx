@@ -1,4 +1,4 @@
-import MenuIcon from "./MenuIcon";
+import MenuIcon from "./baseSVG/MenuIcon";
 
 const OverviewIcon = () => {
   return (

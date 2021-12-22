@@ -1,4 +1,4 @@
-const { default: styled } = require("styled-components");
+import styled from "styled-components";
 
 const MenuIcon = styled.svg`
   width: 40px;
