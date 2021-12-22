@@ -15,35 +15,51 @@ const Navbar = () => {
       </NavLogo>
       <Menu>
         <MenuList>
-          <MenuListItem>
+          <LinkStyled to="/overview">
             <OverviewIcon />
-            <Link className={"link"} to="/overview">
-              Overview
-            </Link>
-          </MenuListItem>
-          <MenuListItem>
+            <span>Overview</span>
+          </LinkStyled>
+          <LinkStyled to="/assets">
             <AssetsIcon />
-            <Link className={"link"} to="/assets">
-              Assets
-            </Link>
-          </MenuListItem>
-          <MenuListItem>
+            <span className={"link"}>Assets</span>
+          </LinkStyled>
+          <LinkStyled to="/users">
             <UserIcon />
-            <Link className={"link"} to="/users">
-              Users
-            </Link>
-          </MenuListItem>
-          <MenuListItem>
+            <span className={"link"}>Users</span>
+          </LinkStyled>
+          <LinkStyled to="/units">
             <UnitsIcon />
-            <Link className={"link"} to="/units">
-              Units
-            </Link>
-          </MenuListItem>
+            <span className={"link"}>Units</span>
+          </LinkStyled>
         </MenuList>
       </Menu>
     </NavContainer>
   );
 };
+const LinkStyled = styled(Link)`
+  ${displayFlexCenter};
+  justify-content: flex-start;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+
+  span {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    color: ${(props) => props.theme.menuTextColor};
+    @media (max-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+      display: none;
+    }
+  }
+  &:hover {
+    span {
+      color: ${(props) => props.theme.colorSecondary};
+    }
+    svg {
+      stroke: ${(props) => props.theme.colorSecondary};
+    }
+  }
+`;
 const NavContainer = styled.div`
   ${displayFlexColumn};
   justify-content: flex-start;
@@ -57,6 +73,7 @@ const NavContainer = styled.div`
     width: 250px;
   }
 `;
+
 const NavLogo = styled.div`
   ${displayFlexCenter}
 
@@ -81,28 +98,5 @@ const NavLogo = styled.div`
 
 const Menu = styled.div``;
 const MenuList = styled.div``;
-const MenuListItem = styled.div`
-  ${displayFlexCenter};
-  justify-content: flex-start;
-  margin-bottom: 0.3rem;
-  cursor: pointer;
-  color: ${(props) => props.theme.menuTextColor};
-  &:hover {
-    color: ${(props) => props.theme.colorSecondary};
-  }
-  .link {
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin-left: 1rem;
-    @media (max-width: ${(props) => props.theme.sizes.breakPointMedium}) {
-      display: none;
-    }
-  }
-  .link:hover {
-    color: ${(props) => props.theme.colorSecondary};
-  }
-  .link:visited {
-    color: ${(props) => props.theme.menuTextColor};
-  }
-`;
+
 export default Navbar;
