@@ -31,7 +31,7 @@ const AssetCard = ({ asset }) => {
           </button>
         </MoreInfo>
       </AssetCardContainer>
-      <Modal showModal={showModal} setShowModal={setShowModal}>
+      <Modal id={"card"} showModal={showModal} setShowModal={setShowModal}>
         <AssetDetails asset={asset} />
       </Modal>
     </>

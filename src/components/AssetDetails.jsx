@@ -4,7 +4,14 @@ import styled from "styled-components";
 import Modal from "./Modal";
 
 const AssetDetails = ({ asset }) => {
+  //essa lógica de abrir modal está duplicada
+  //#TODO
+  //revisar o necessário para refatorar, talvez com custom hooks
+  const openModal = (set) => {
+    set((prev) => !prev);
+  };
   const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <AssetName>{asset.name}</AssetName>
@@ -25,7 +32,16 @@ const AssetDetails = ({ asset }) => {
       </div>
       <div className="responsavel">
         Responsável:
-        <Modal showModal={showModal} setShowModal={setShowModal}></Modal>
+        <button
+          onClick={() => {
+            openModal(setShowModal);
+          }}
+        >
+          seleciona os maluco
+        </button>
+        <Modal id={"details"} showModal={showModal} setShowModal={setShowModal}>
+          Malucos
+        </Modal>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 
-const Modal = ({ showModal, setShowModal, children }) => {
+const Modal = ({ showModal, setShowModal, children, id }) => {
   // para utilizar o modal, é necessário que seja setado o state desse modal
   // no componente pai, pois ele quem terá o controle se deve abrir ou fechar
   // #TODO :
@@ -11,7 +11,7 @@ const Modal = ({ showModal, setShowModal, children }) => {
   const modalRef = useRef();
 
   const closeModal = (e) => {
-    if (modalRef.current === e.target || e.target.id === "close") {
+    if (modalRef.current === e.target || e.target.id === id) {
       setShowModal(false);
     }
   };
@@ -37,7 +37,7 @@ const Modal = ({ showModal, setShowModal, children }) => {
           <ModalWrapper showModal={showModal}>
             <ModalHeader>
               <CloseIcon>
-                <span id={"close"} onClick={closeModal}>
+                <span id={id} onClick={closeModal}>
                   x
                 </span>
               </CloseIcon>
@@ -65,10 +65,10 @@ const Background = styled.div`
 
 const ModalWrapper = styled.div`
   width: 90%;
-  height: 80%;
+  height: 85%;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
-  position: relative;
+  position: absolute;
   z-index: 10;
   border-radius: 10px;
   overflow: scroll;
