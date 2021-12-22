@@ -1,5 +1,6 @@
 import { displayFlexCenter, displayFlexColumn } from "css/styles";
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { UserIcon, AssetsIcon, UnitsIcon, OverviewIcon } from "./icon";
@@ -15,7 +16,7 @@ const Navbar = () => {
       </NavLogo>
       <Menu>
         <MenuList>
-          <LinkStyled to="/overview">
+          <LinkStyled to="/">
             <OverviewIcon />
             <span>Overview</span>
           </LinkStyled>

@@ -1,13 +1,12 @@
 import styled, { ThemeProvider } from "styled-components";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import db from "./database.json";
+import db from "services/database.json";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import { theme } from "css/theme";
 import { Header, Navbar } from "components";
-import Overview from "view/Overview";
-import Test from "view/Test";
+import { Overview, Assets, Users, Units } from "view";
 
 function App() {
   const [units, setUnits] = useState(db.units);
@@ -29,8 +28,6 @@ function App() {
       return user.unitId === unitSelected;
     });
     setUnitUsers(usersFiltered);
-    console.log(assetsFiltered);
-    console.log(usersFiltered);
   }, [unitSelected]);
 
   return (
@@ -45,7 +42,7 @@ function App() {
 
           <Routes>
             <Route
-              path="overview"
+              path={"/"}
               element={
                 <Overview
                   assets={unitAssets}
@@ -55,7 +52,9 @@ function App() {
                 />
               }
             />
-            <Route path="invoices" element={<Test />} />
+            <Route path="assets" element={<Assets assets={unitAssets} />} />
+            <Route path="users" element={<Users />} />
+            <Route path="Units" element={<Units />} />
           </Routes>
         </RightContainer>
       </ThemeProvider>
@@ -73,7 +72,6 @@ const PageContainer = styled.div`
 
 const LeftContainer = styled.div`
   ${displayFlexColumn};
-  /* min-width: 60px; */
   max-width: 300px;
 `;
 

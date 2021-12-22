@@ -3,8 +3,6 @@ import InfoTotal from "./InfoTotal";
 
 const UnitsInfo = ({ units }) => {
   const [totalUnits, setTotalUnits] = useState(0);
-
-  console.log(units);
   useEffect(() => {
     setTotalUnits(units.length);
   }, [units]);
