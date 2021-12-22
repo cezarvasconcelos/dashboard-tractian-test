@@ -1,10 +1,13 @@
 import styled, { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import db from "./database.json";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import { theme } from "css/theme";
-import { Header, AssetsInfo, UsersInfo, UnitsInfo, GeneralChart, Navbar } from "components";
+import { Header, Navbar } from "components";
+import Overview from "view/Overview";
+import Test from "view/Test";
 
 function App() {
   const [units, setUnits] = useState(db.units);
@@ -14,7 +17,6 @@ function App() {
   const [unitAssets, setUnitAssets] = useState([]);
   const [unitUsers, setUnitUsers] = useState([]);
   const unitSelected = useSelector((state) => state.unit.unitId);
-
   useEffect(() => {
     let assetsFiltered = [];
     assetsFiltered = db.assets.filter((asset) => {
@@ -30,6 +32,7 @@ function App() {
     console.log(assetsFiltered);
     console.log(usersFiltered);
   }, [unitSelected]);
+
   return (
     <PageContainer>
       <ThemeProvider theme={theme}>
@@ -38,12 +41,22 @@ function App() {
         </LeftContainer>
         <RightContainer>
           <Header units={units} />
-          <OverView>
-            <AssetsInfo assets={unitAssets} />
-            <UsersInfo users={unitUsers} />
-            <UnitsInfo units={units} />
-            {/* <GeneralChart info={unitSelected} /> */}
-          </OverView>
+          {/* <Overview assets={unitAssets} users={unitUsers} units={units} info={unitSelected} /> */}
+
+          <Routes>
+            <Route
+              path="overview"
+              element={
+                <Overview
+                  assets={unitAssets}
+                  users={unitUsers}
+                  units={units}
+                  //  info={unitSelected}
+                />
+              }
+            />
+            <Route path="invoices" element={<Test />} />
+          </Routes>
         </RightContainer>
       </ThemeProvider>
     </PageContainer>
@@ -69,13 +82,6 @@ const RightContainer = styled.div`
   align-items: center;
   flex-grow: 2;
   position: relative;
-`;
-
-const OverView = styled.div`
-  ${displayFlexCenter};
-  flex-wrap: wrap;
-  /* height: 100vh; */
-  width: 90%;
 `;
 
 export default App;

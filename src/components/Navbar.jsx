@@ -1,5 +1,6 @@
 import { displayFlexCenter, displayFlexColumn } from "css/styles";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { UserIcon, AssetsIcon, UnitsIcon, OverviewIcon } from "./icon";
 
@@ -16,20 +17,27 @@ const Navbar = () => {
         <MenuList>
           <MenuListItem>
             <OverviewIcon />
-            <a href="#">Overview</a>
+            <Link className={"link"} to="/overview">
+              Overview
+            </Link>
           </MenuListItem>
           <MenuListItem>
             <AssetsIcon />
-
-            <a href="#">Assets</a>
+            <Link className={"link"} to="/assets">
+              Assets
+            </Link>
           </MenuListItem>
           <MenuListItem>
             <UserIcon />
-            <a href="#">Users</a>
+            <Link className={"link"} to="/users">
+              Users
+            </Link>
           </MenuListItem>
           <MenuListItem>
             <UnitsIcon />
-            <a href="#">Units</a>
+            <Link className={"link"} to="/units">
+              Units
+            </Link>
           </MenuListItem>
         </MenuList>
       </Menu>
@@ -80,11 +88,9 @@ const MenuListItem = styled.div`
   cursor: pointer;
   color: ${(props) => props.theme.menuTextColor};
   &:hover {
-    a {
-      color: ${(props) => props.theme.colorSecondary};
-    }
+    color: ${(props) => props.theme.colorSecondary};
   }
-  a {
+  .link {
     font-weight: 600;
     font-size: 1.2rem;
     margin-left: 1rem;
@@ -92,10 +98,10 @@ const MenuListItem = styled.div`
       display: none;
     }
   }
-  a:hover {
+  .link:hover {
     color: ${(props) => props.theme.colorSecondary};
   }
-  a:visited {
+  .link:visited {
     color: ${(props) => props.theme.menuTextColor};
   }
 `;
