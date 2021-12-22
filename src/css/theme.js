@@ -1,5 +1,9 @@
 export const theme = {
+	colorPrimary: '#185ef6',
+	colorSecondary: '#51b9ff',
 	iconColor: '#161515',
+	menuTextColor: '#FFFFFF',
+	iconMenuColor: '#185ef6',
 	infoTextColor: '',
 	alertColor: '#fac000',
 	operationColor: '#08fa00',

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { displayFlexCenter } from "css/styles";
-import ArrowDown from "./icon/ArrowDown";
+import { ArrowDown } from "./icon";
+
 import { selectUnit } from "redux/features/unitSlice";
 
 const Header = ({ units }) => {
@@ -50,12 +51,16 @@ const Header = ({ units }) => {
 };
 
 const HeaderContainer = styled.div`
+  /* top: 0; */
+  /* position: absolute; */
+  /* z-index: 1000; */
   ${displayFlexCenter};
   justify-content: space-between;
   width: 90%;
-  padding: 1.3em 0;
+  padding: 2em 0;
   height: 60px;
-  margin-bottom: 2em;
+  /* margin-bottom: auto; */
+  /* margin-bottom: 4em; */
 `;
 const HeaderLeft = styled.div`
   ${displayFlexCenter};

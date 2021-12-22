@@ -42,7 +42,7 @@ function App() {
             <AssetsInfo assets={unitAssets} />
             <UsersInfo users={unitUsers} />
             <UnitsInfo units={units} />
-            <GeneralChart info={unitSelected} />
+            {/* <GeneralChart info={unitSelected} /> */}
           </OverView>
         </RightContainer>
       </ThemeProvider>
@@ -54,28 +54,27 @@ const PageContainer = styled.div`
   ${displayFlex};
   justify-content: space-between;
   width: 100%;
-  min-width: 310px;
+  min-width: 280px;
   height: 100vh;
 `;
 
 const LeftContainer = styled.div`
   ${displayFlexColumn};
-  min-width: 60px;
+  /* min-width: 60px; */
   max-width: 300px;
-  background: #b9b8b8;
 `;
 
 const RightContainer = styled.div`
-  ${displayFlexCenter};
   ${displayFlexColumn};
+  align-items: center;
   flex-grow: 2;
-  /* background-color: #d4d4d4; */
+  position: relative;
 `;
 
 const OverView = styled.div`
   ${displayFlexCenter};
   flex-wrap: wrap;
-  height: 100vh;
+  /* height: 100vh; */
   width: 90%;
 `;
 

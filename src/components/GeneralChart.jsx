@@ -5,7 +5,7 @@ import HighchartsReact from "highcharts-react-official";
 
 const options = {
   chart: {
-    type: "line",
+    type: "bar",
   },
   title: {
     text: "Fruit Consumption",
@@ -37,10 +37,13 @@ const GeneralChart = () => (
 );
 
 const TestComponent = styled.div`
-  ${displayFlexCenter};
+  /* ${displayFlexCenter}; */
   /* outline: 1px solid red; */
-
-  width: 100%;
+  height: 200px;
+  width: 300px;
+  @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+    width: 100%;
+  }
 `;
 
 export default GeneralChart;

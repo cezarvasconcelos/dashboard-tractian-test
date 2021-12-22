@@ -61,6 +61,9 @@ const AssetsContainer = styled(InfoContainer)`
   @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
     flex-basis: 300px;
   }
+  @media (max-width: ${(props) => props.theme.sizes.breakPointMedium}) {
+    margin-bottom: 1rem;
+  }
 `;
 const Info = styled(InfoTotal)`
   outline: 0px;
