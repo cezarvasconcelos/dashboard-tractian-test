@@ -1,5 +1,5 @@
 import { AssetsInfo, GeneralChart, UnitsInfo, UsersInfo } from "components";
-import ViewContainer from "components/containers/ViewContainer";
+import ViewContainer from "containers/ViewContainer";
 import { displayFlexCenter } from "css/styles";
 import styled from "styled-components";
 

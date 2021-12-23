@@ -1,4 +1,4 @@
-import ViewContainer from "components/containers/ViewContainer";
+import ViewContainer from "containers/ViewContainer";
 import { AssetCard } from "components";
 import { useEffect, useState } from "react";
 import styled from "styled-components";

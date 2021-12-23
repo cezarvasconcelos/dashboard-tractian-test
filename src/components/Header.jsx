@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectUnit } from "redux/current";
+
 import styled from "styled-components";
 import { displayFlexCenter } from "css/styles";
 import { ArrowDown } from "./icon";
-import { selectUnit } from "redux/current";
-
-// import { selectUnit } from "redux/features/unitSlice";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const state = useSelector((state) => state);
-  const [options, setOptions] = useState(state["units"].listUnits);
-
-  // const unidade = useSelector((state) => state.current.unitSelected);
+  const [options] = useState(state["units"].listUnits);
+  const menuTitle = state["current"].menuSelected;
   const toggling = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
 
@@ -26,7 +24,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderLeft>
-        <h1>{state["current"].menuSelected}</h1>
+        <h1>{menuTitle}</h1>
       </HeaderLeft>
       <HeaderRight>
         <HeaderUnit onClick={toggling}>

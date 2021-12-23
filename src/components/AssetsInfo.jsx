@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { displayFlex, displayFlexCenter, displayFlexColumn, outlineInfo } from "css/styles";
-import InfoContainer from "./containers/InfoContainer";
+import InfoContainer from "../containers/InfoContainer";
 import InfoTotal from "./InfoTotal";
 
 const AssetsInfo = ({ assets }) => {

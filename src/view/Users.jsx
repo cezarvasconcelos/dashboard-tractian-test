@@ -1,5 +1,5 @@
 import { AssetsInfo, GeneralChart, UnitsInfo, UserCard, UsersInfo } from "components";
-import ViewContainer from "components/containers/ViewContainer";
+import ViewContainer from "containers/ViewContainer";
 import { UserIcon } from "components/icon";
 import { displayFlexCenter } from "css/styles";
 import { useState } from "react";
