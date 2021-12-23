@@ -1,12 +1,18 @@
-import { AssetsInfo, GeneralChart, UnitsInfo, UsersInfo } from "components";
+import { AssetsInfo, GeneralChart, UnitsInfo, UserCard, UsersInfo } from "components";
 import ViewContainer from "components/containers/ViewContainer";
+import { UserIcon } from "components/icon";
 import { displayFlexCenter } from "css/styles";
+import { useState } from "react";
 import styled from "styled-components";
 
 const Users = ({ users }) => {
+  // const [currentUser, setCurrentUser] = useState(users);
+  console.log(users);
   return (
     <ViewContainer>
-      <h3>HELOOO THERE MY FRIEND I'm on userland</h3>
+      {users.map((user) => {
+        return <UserCard user={user} key={user.id} />;
+      })}
     </ViewContainer>
   );
 };

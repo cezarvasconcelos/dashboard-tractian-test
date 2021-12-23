@@ -53,8 +53,8 @@ function App() {
               }
             />
             <Route path="assets" element={<Assets assets={unitAssets} />} />
-            <Route path="users" element={<Users />} />
-            <Route path="Units" element={<Units />} />
+            <Route path="users" element={<Users users={unitUsers} />} />
+            <Route path="units" element={<Units />} />
           </Routes>
         </RightContainer>
       </ThemeProvider>
