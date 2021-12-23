@@ -16,18 +16,26 @@ function App() {
   const [unitAssets, setUnitAssets] = useState([]);
   const [unitUsers, setUnitUsers] = useState([]);
   const unitSelected = useSelector((state) => state.unit.unitId);
-  useEffect(() => {
-    let assetsFiltered = [];
-    assetsFiltered = db.assets.filter((asset) => {
-      return asset.unitId === unitSelected;
-    });
-    setUnitAssets(assetsFiltered);
 
-    let usersFiltered = [];
-    usersFiltered = db.users.filter((user) => {
-      return user.unitId === unitSelected;
-    });
-    setUnitUsers(usersFiltered);
+  useEffect(() => {
+    console.log(unitAssets);
+    if (unitSelected !== 0) {
+      let assetsFiltered = [];
+      assetsFiltered = db.assets.filter((asset) => {
+        return asset.unitId === unitSelected;
+      });
+      setUnitAssets(assetsFiltered);
+
+      let usersFiltered = [];
+      usersFiltered = db.users.filter((user) => {
+        return user.unitId === unitSelected;
+      });
+      setUnitUsers(usersFiltered);
+    } else {
+      setUnits(db.units);
+      setUnitAssets(db.assets);
+      setUnitUsers(db.users);
+    }
   }, [unitSelected]);
 
   return (
@@ -54,7 +62,7 @@ function App() {
             />
             <Route path="assets" element={<Assets assets={unitAssets} />} />
             <Route path="users" element={<Users users={unitUsers} />} />
-            <Route path="units" element={<Units />} />
+            <Route path="units" element={<Units units={units} />} />
           </Routes>
         </RightContainer>
       </ThemeProvider>
