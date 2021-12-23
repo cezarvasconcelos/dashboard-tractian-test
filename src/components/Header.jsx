@@ -7,16 +7,18 @@ import { displayFlexCenter } from "css/styles";
 import { ArrowDown } from "./icon";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const state = useSelector((state) => state);
-  const [options] = useState(state["units"].listUnits);
-  const menuTitle = state["current"].menuSelected;
-  const toggling = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+  const units = useSelector((state) => state.units.listUnits);
+  const [selectedUnit, setSelectedUnit] = useState(null);
+  const menuTitle = useSelector((state) => state.current.menuSelected);
+
+  const toggling = () => {
+    setIsOpen(!isOpen);
+  };
 
   const onOptionClicked = (unit) => () => {
-    setSelectedOption(unit.name);
+    setSelectedUnit(unit.name);
     setIsOpen(false);
     dispatch(selectUnit(unit.id));
   };
@@ -29,11 +31,11 @@ const Header = () => {
       <HeaderRight>
         <HeaderUnit onClick={toggling}>
           <DropDownContainer>
-            <DropDownHeader>{selectedOption || "Todos"}</DropDownHeader>
+            <DropDownHeader>{selectedUnit || "Todos"}</DropDownHeader>
             {isOpen && (
               <DropDownListContainer>
                 <DropDownList>
-                  {options.map((unit) => (
+                  {units.map((unit) => (
                     <ListItem onClick={onOptionClicked(unit)} key={unit.id}>
                       {unit.name}
                     </ListItem>
