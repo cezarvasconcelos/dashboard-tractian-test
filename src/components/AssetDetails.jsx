@@ -1,9 +1,13 @@
-import { AssetStatus } from "components";
+import { AssetStatus, UserCard } from "components";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Modal from "./Modal";
+import { filterListByUnitId } from "util";
 
 const AssetDetails = ({ asset }) => {
+  const unitId = useSelector((state) => state.current.unitSelected);
+  const listUsers = useSelector((state) => state.users.listUsers);
   //essa lógica de abrir modal está duplicada
   //#TODO
   //revisar o necessário para refatorar, talvez com custom hooks
@@ -40,7 +44,11 @@ const AssetDetails = ({ asset }) => {
           seleciona os maluco
         </button>
         <Modal id={"details"} showModal={showModal} setShowModal={setShowModal}>
-          Malucos
+          <div className="">Selecione o responsável pela máquina</div>
+          {filterListByUnitId(listUsers, unitId).map((user) => {
+            console.log(user);
+            return <UserCard user={user} key={user.id} />;
+          })}
         </Modal>
       </div>
     </div>

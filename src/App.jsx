@@ -1,8 +1,8 @@
 import styled, { ThemeProvider } from "styled-components";
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { displayFlex, displayFlexColumn } from "css/styles";
 import { theme } from "css/theme";
 import { Header, Navbar } from "components";
 import { Overview, Assets, Users, Units } from "view";
@@ -11,11 +11,7 @@ import { loadUnits } from "redux/units";
 import { loadAssets } from "redux/assets";
 
 function App() {
-  const [units, setUnits] = useState([]);
   const dispatch = useDispatch();
-  const [unitAssets, setUnitAssets] = useState([]);
-  const [unitUsers, setUnitUsers] = useState([]);
-
   useEffect(() => {
     dispatch(loadUsers());
     dispatch(loadUnits());
@@ -28,24 +24,14 @@ function App() {
           <Navbar />
         </LeftContainer>
         <RightContainer>
-          <Header units={units} />
+          <Header />
           {/* <Overview assets={unitAssets} users={unitUsers} units={units} info={unitSelected} /> */}
 
           <Routes>
-            <Route
-              path={"/"}
-              element={
-                <Overview
-                  assets={unitAssets}
-                  users={unitUsers}
-                  units={units}
-                  //  info={unitSelected}
-                />
-              }
-            />
-            <Route path="assets" element={<Assets assets={unitAssets} />} />
-            <Route path="users" element={<Users users={unitUsers} />} />
-            <Route path="units" element={<Units units={units} />} />
+            <Route path={"/"} element={<Overview />} />
+            <Route path="assets" element={<Assets />} />
+            <Route path="users" element={<Users />} />
+            <Route path="units" element={<Units />} />
           </Routes>
         </RightContainer>
       </ThemeProvider>

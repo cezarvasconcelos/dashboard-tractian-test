@@ -1,9 +1,10 @@
-import { AssetsInfo, GeneralChart, UnitsInfo, UsersInfo } from "components";
 import ViewContainer from "containers/ViewContainer";
 import { displayFlexCenter } from "css/styles";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-const Units = ({ units }) => {
+const Units = () => {
+  const units = useSelector((state) => state.units.listUnits);
   return (
     <ViewContainer>
       {units.map((unit) => {

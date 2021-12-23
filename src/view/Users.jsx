@@ -1,16 +1,16 @@
-import { AssetsInfo, GeneralChart, UnitsInfo, UserCard, UsersInfo } from "components";
+import { UserCard } from "components";
 import ViewContainer from "containers/ViewContainer";
-import { UserIcon } from "components/icon";
-import { displayFlexCenter } from "css/styles";
-import { useState } from "react";
-import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { filterListByUnitId } from "util";
 
 const Users = ({ users }) => {
-  // const [currentUser, setCurrentUser] = useState(users);
+  const unitId = useSelector((state) => state.current.unitSelected);
+  const listUsers = useSelector((state) => state.users.listUsers);
+
   console.log(users);
   return (
     <ViewContainer>
-      {users.map((user) => {
+      {filterListByUnitId(listUsers, unitId).map((user) => {
         return <UserCard user={user} key={user.id} />;
       })}
     </ViewContainer>

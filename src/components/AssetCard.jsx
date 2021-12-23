@@ -1,4 +1,4 @@
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
+import { displayFlexCenter, displayFlexColumn } from "css/styles";
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";

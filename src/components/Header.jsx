@@ -22,7 +22,6 @@ const Header = () => {
     setIsOpen(false);
     dispatch(selectUnit(unit.id));
   };
-
   return (
     <HeaderContainer>
       <HeaderLeft>
@@ -52,16 +51,11 @@ const Header = () => {
 };
 
 const HeaderContainer = styled.div`
-  /* top: 0; */
-  /* position: absolute; */
-  /* z-index: 1000; */
   ${displayFlexCenter};
   justify-content: space-between;
   width: 90%;
   padding: 2em 0;
   height: 60px;
-  /* margin-bottom: auto; */
-  /* margin-bottom: 4em; */
 `;
 const HeaderLeft = styled.div`
   ${displayFlexCenter};
