@@ -3,8 +3,8 @@ import reducerUnits from "./units";
 import reducerUsers from "./users";
 import reducerAssets from "./assets";
 import reducerCurrent from "./current";
-import api from "./middleware/api"; {
-}
+import api from "./middleware/api";
+
 const reducer = combineReducers({
 	units: reducerUnits,
 	users: reducerUsers,

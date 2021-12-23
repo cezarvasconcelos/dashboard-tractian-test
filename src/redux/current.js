@@ -5,19 +5,27 @@ const slice = createSlice({
 	initialState: {
 		unitSelected: 0,
 		menuSelected: 'Geral',
+		assetsUnitSelected: [],
+		usersUnitSelected: []
 	},
 
 	reducers: {
 		selectUnit: (current, action) => {
 			current.unitSelected = action.payload;
 		},
-		electUnit: (current, action) => {
+		selectMenu: (current, action) => {
 			current.menuSelected = action.payload;
+		},
+		selectAssetsUnit: (current, action) => {
+			current.assetsUnitSelected = action.payload;
+		},
+		selectUsersUnit: (current, action) => {
+			current.usersUnitSelected = action.payload;
 		},
 	},
 });
 
 export default slice.reducer;
 
-export const { selectUnit, selectMenu } = slice.actions;
+export const { selectUnit, selectMenu, selectAssetsUnit, selectUsersUnit } = slice.actions;
 
