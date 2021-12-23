@@ -6,6 +6,11 @@ const slice = createSlice({
 	initialState: {
 		listAssets: [],
 		loading: false,
+		testNumber: 0,
+	},
+
+	setAssetToDelete: () => {
+		console.log(this)
 	},
 
 	reducers: {
@@ -21,14 +26,36 @@ const slice = createSlice({
 		assetsRequestFailed: (assets, action) => {
 			assets.loading = false;
 		},
+
+		assetDeleteFromList: (assets, action) => {
+			alert('Item excluído');
+			assets.listAssets = assets.listAssets.filter((element) => element.id !== action.payload);
+		},
+		updateAssetFromList: (assets, action) => {
+
+			const assetsCopy = [...assets.listAssets];
+			const targetIndex = assetsCopy.findIndex(f => f.id === action.payload.id);
+			assetsCopy[targetIndex] = action.payload;
+
+			console.log("item atualizado, na teoria");
+		},
+
+		newAsset: (assets, action) => {
+			assets.listAssets = [...assets.listAssets, action.payload];
+			console.log(action.payload)
+			assets.loading = false;
+		},
+
 	},
 });
 
 export default slice.reducer;
 
-const { assetsRequested, assetsReceived, assetsRequestFailed } = slice.actions;
+export const { assetsRequested, assetsReceived, assetsRequestFailed, assetDeleteFromList, updateAssetFromList, newAsset } = slice.actions;
 
 const url = "/assets";
+
+
 
 export const loadAssets = () => (dispatch) => {
 	return dispatch(
@@ -37,6 +64,51 @@ export const loadAssets = () => (dispatch) => {
 			onStart: assetsRequested.type,
 			onSuccess: assetsReceived.type,
 			onError: assetsRequestFailed.type,
+		})
+	);
+};
+
+export const updateAsset = (asset) => (dispatch) => {
+	console.log("no update")
+	console.log(asset);
+	return dispatch(
+		apiCallBegan({
+			url: `${url}/${asset.id}`,
+			method: 'PUT',
+			onStart: assetsRequested.type,
+			// onSuccess: assetDeletedSucess.type,
+			onError: assetsRequestFailed.type,
+			data: asset,
+		})
+	);
+};
+
+//#TODO
+//entender o que está ocorrendo exatamente no reducer
+//acredito que isso quebra a premissa de um reducer ser uma função pura
+export const deleteAsset = (idAsset) => (dispatch) => {
+	console.log("no delete")
+	return dispatch(
+		apiCallBegan({
+			url: `${url}/${idAsset}`,
+			method: 'DELETE',
+			onStart: assetsRequested.type,
+			// onSuccess: assetDeletedSucess.type,
+			onError: assetsRequestFailed.type,
+		})
+	);
+};
+
+export const addAsset = (asset) => (dispatch) => {
+	console.log("no addAsset")
+	return dispatch(
+		apiCallBegan({
+			url,
+			method: 'POST',
+			onStart: assetsRequested.type,
+			onSuccess: newAsset.type,
+			onError: assetsRequestFailed.type,
+			data: asset,
 		})
 	);
 };

@@ -1,18 +1,18 @@
 import { displayFlexCenter, displayFlexColumn } from "css/styles";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import AssetDetails from "./AssetDetails";
 import AssetStatus from "./AssetStatus";
 import Modal from "./Modal";
 
-const AssetCard = ({ asset }) => {
+const AssetCard = ({ asset, onRemove, onUpdate }) => {
   const openModal = (set) => {
     set((prev) => !prev);
   };
-  // console.log(asset);
+
   const [showModal, setShowModal] = useState(false);
-  // const [showModal2, setShowModal2] = useState(false);
 
   return (
     <>
@@ -28,6 +28,21 @@ const AssetCard = ({ asset }) => {
             }}
           >
             Info
+          </button>
+
+          <button
+            onClick={() => {
+              onRemove(asset.id);
+            }}
+          >
+            deletaAsset
+          </button>
+          <button
+            onClick={() => {
+              onUpdate(asset);
+            }}
+          >
+            updateAsset
           </button>
         </MoreInfo>
       </AssetCardContainer>

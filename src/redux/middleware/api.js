@@ -21,6 +21,7 @@ const api =
 						method,
 						data,
 					});
+					console.log(response.data);
 					// General
 					dispatch(actions.apiCallSucess(response.data));
 					// Specific

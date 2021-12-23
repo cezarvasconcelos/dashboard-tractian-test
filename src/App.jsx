@@ -17,6 +17,7 @@ function App() {
     dispatch(loadUnits());
     dispatch(loadAssets());
   }, [dispatch]);
+
   return (
     <PageContainer>
       <ThemeProvider theme={theme}>
