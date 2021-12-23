@@ -1,31 +1,32 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { displayFlexCenter } from "css/styles";
 import { ArrowDown } from "./icon";
+import { selectUnit } from "redux/current";
 
-import { selectUnit } from "redux/features/unitSlice";
+// import { selectUnit } from "redux/features/unitSlice";
 
-const Header = ({ units }) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  //coloca um objeto fictício para representar o All
-  const [options] = useState([{ id: 0, name: "Todos", companyId: 0 }, ...units]);
+  const state = useSelector((state) => state);
+  const [options, setOptions] = useState(state["units"].listUnits);
+
+  // const unidade = useSelector((state) => state.current.unitSelected);
   const toggling = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
 
   const onOptionClicked = (unit) => () => {
     setSelectedOption(unit.name);
     setIsOpen(false);
-
-    //chamando o reducer criado no unitSlice.js(é passado nesse caso o ID)
     dispatch(selectUnit(unit.id));
   };
 
   return (
     <HeaderContainer>
       <HeaderLeft>
-        <h1>Geral</h1>
+        <h1>{state["current"].menuSelected}</h1>
       </HeaderLeft>
       <HeaderRight>
         <HeaderUnit onClick={toggling}>

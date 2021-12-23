@@ -1,13 +1,22 @@
 import { displayFlexCenter, displayFlexColumn } from "css/styles";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+// import { selectMenu } from "redux/features/unitSlice";
 import styled from "styled-components";
 import { UserIcon, AssetsIcon, UnitsIcon, OverviewIcon } from "./icon";
 
 const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
 const Navbar = () => {
+  // const dispatch = useDispatch();
+  let menus = ["Geral", "Assets", "Usuários", "Unidades"];
+  const onMenuSelected = (menu) => {
+    console.log(menu);
+    // dispatch(selectMenu(menu));
+  };
+
   return (
     <NavContainer>
       <NavLogo>
@@ -16,21 +25,21 @@ const Navbar = () => {
       </NavLogo>
 
       <Menu>
-        <LinkStyled to="/">
+        <LinkStyled to="/" onClick={() => onMenuSelected(menus[0])}>
           <OverviewIcon />
-          <span>Overview</span>
+          <span className={"link"}>{menus[0]}</span>
         </LinkStyled>
-        <LinkStyled to="/assets">
+        <LinkStyled to="/assets" onClick={() => onMenuSelected(menus[1])}>
           <AssetsIcon />
-          <span className={"link"}>Assets</span>
+          <span className={"link"}>{menus[1]}</span>
         </LinkStyled>
-        <LinkStyled to="/users">
+        <LinkStyled to="/users" onClick={() => onMenuSelected(menus[2])}>
           <UserIcon />
-          <span className={"link"}>Users</span>
+          <span className={"link"}>{menus[2]}</span>
         </LinkStyled>
-        <LinkStyled to="/units">
+        <LinkStyled to="/units" onClick={() => onMenuSelected(menus[3])}>
           <UnitsIcon />
-          <span className={"link"}>Units</span>
+          <span className={"link"}>{menus[3]}</span>
         </LinkStyled>
       </Menu>
     </NavContainer>

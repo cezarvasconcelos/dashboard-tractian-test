@@ -1,43 +1,26 @@
 import styled, { ThemeProvider } from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import db from "services/database.json";
+import { useDispatch, useSelector } from "react-redux";
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import { theme } from "css/theme";
 import { Header, Navbar } from "components";
 import { Overview, Assets, Users, Units } from "view";
+import { loadUsers } from "redux/users";
+import { loadUnits } from "redux/units";
+import { loadAssets } from "redux/assets";
 
 function App() {
-  const [units, setUnits] = useState(db.units);
-  // const [users, setUsers] = useState(db.users);
-  // const [assets, setAssets] = useState(db.assets);
-  // const [companies, setCompanies] = useState(db.companies);
+  const [units, setUnits] = useState([]);
+  const dispatch = useDispatch();
   const [unitAssets, setUnitAssets] = useState([]);
   const [unitUsers, setUnitUsers] = useState([]);
-  const unitSelected = useSelector((state) => state.unit.unitId);
 
   useEffect(() => {
-    console.log(unitAssets);
-    if (unitSelected !== 0) {
-      let assetsFiltered = [];
-      assetsFiltered = db.assets.filter((asset) => {
-        return asset.unitId === unitSelected;
-      });
-      setUnitAssets(assetsFiltered);
-
-      let usersFiltered = [];
-      usersFiltered = db.users.filter((user) => {
-        return user.unitId === unitSelected;
-      });
-      setUnitUsers(usersFiltered);
-    } else {
-      setUnits(db.units);
-      setUnitAssets(db.assets);
-      setUnitUsers(db.users);
-    }
-  }, [unitSelected]);
-
+    dispatch(loadUsers());
+    dispatch(loadUnits());
+    dispatch(loadAssets());
+  }, [dispatch]);
   return (
     <PageContainer>
       <ThemeProvider theme={theme}>
