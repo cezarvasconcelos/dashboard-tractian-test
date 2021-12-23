@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import reducerUnits from "./units";
 import reducerUsers from "./users";
 import reducerAssets from "./assets";
@@ -14,6 +14,6 @@ const reducer = combineReducers({
 export default function store() {
 	return configureStore({
 		reducer,
-		middleware: [...getDefaultMiddleware(), api],
+		middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), api],
 	});
 }
