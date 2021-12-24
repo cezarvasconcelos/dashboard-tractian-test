@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUnit } from "redux/current";
 
 import styled from "styled-components";
-import { displayFlexCenter } from "css/styles";
+import { cardBorderShadow, displayFlexCenter } from "css/styles";
 import { ArrowDown } from "./icon";
 
 const Header = () => {
@@ -104,6 +104,7 @@ const DropDownHeader = styled.div`
   @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
    font-size: 1.5rem;
   }
+  padding: 0 0.4rem;
 `;
 
 const DropDownListContainer = styled.div`
@@ -111,7 +112,7 @@ const DropDownListContainer = styled.div`
 `;
 
 const DropDownList = styled.ul`
-  background: #ffffff;
+  background: ${(props) => props.theme.backgroundColorDefault};
   position: absolute;
   right: 0;
   font-size: 1rem;
@@ -121,6 +122,9 @@ const DropDownList = styled.ul`
   @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
    font-size: 1.5rem;
   }
+  z-index: 200;
+  padding: 0.3rem 0.4rem;
+  ${cardBorderShadow}
 `;
 
 const ListItem = styled.li`

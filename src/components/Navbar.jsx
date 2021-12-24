@@ -73,7 +73,7 @@ const NavContainer = styled.div`
   ${displayFlexColumn};
   justify-content: flex-start;
   align-items: center;
-  background: #b9b8b8;
+  background: ${(props) => props.theme.colorPrimary};
   width: 100%;
   height: 100%;
   width: 70px;

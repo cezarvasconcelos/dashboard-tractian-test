@@ -1,14 +1,11 @@
 import styled from "styled-components";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { filterListByUnitId } from "util";
 import { theme } from "css/theme";
 
-const PieChart = () => {
-  const unitId = useSelector((state) => state.current.unitSelected);
-  const listAssets = useSelector((state) => state.assets.listAssets);
+const PieChart = ({ unitId, listAssets }) => {
   let [initialMount, setInitialMount] = useState(true);
   let initialTotalsState = {
     assets: 0,
@@ -47,8 +44,10 @@ const PieChart = () => {
   }, [totals, listAssets, initialMount]);
 
   useEffect(() => {
-    setInitialMount(true);
-    setTotals(initialTotalsState);
+    return () => {
+      setTotals(initialTotalsState);
+      setInitialMount(true);
+    };
   }, [unitId]);
 
   const options = {

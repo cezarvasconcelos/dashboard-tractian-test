@@ -1,4 +1,4 @@
-import { UserCard } from "components";
+import { AddButton, UserCard } from "components";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
@@ -83,9 +83,8 @@ const AssetDetails = ({ asset }) => {
               onChange={onChange}
             />
             <div className="responsável">
-              <button type="button" onClick={() => setShowModal(true)}>
-                Adicionar
-              </button>
+              {/* <button type="button" onClick={() => setShowModal(true)}> */}
+              <AddButton setShowModal={setShowModal} text={"responsável"} />
             </div>
           </GroupDetails>
 
@@ -121,6 +120,7 @@ const Form = styled.form`
   ${displayFlexColumn};
   justify-content: center;
   align-items: center;
+  margin-top: 1rem;
 `;
 
 const Specifications = styled.div`
@@ -137,7 +137,7 @@ const MidSection = styled.div`
 
 const ImgAssetModal = styled.img`
   width: 100%;
-  height: 50%;
+  height: 250px;
   max-height: 300px;
   object-fit: cover;
   margin-top: -50px;

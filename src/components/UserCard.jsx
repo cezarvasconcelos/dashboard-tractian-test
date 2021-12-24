@@ -1,9 +1,9 @@
+import { DeleteButton } from "components";
 import { UserIcon } from "components/icon";
-import { displayFlexCenter } from "css/styles";
+import { cardBorderShadow } from "css/styles";
 import styled from "styled-components";
 
 const UserCard = ({ user, setResponsible, setShowModal, onRemove, pointer }) => {
-  // const [currentUser, setCurrentUser] = useState(users);
   const handleClick = (e) => {
     e.preventDefault();
     if (setResponsible) {
@@ -14,13 +14,11 @@ const UserCard = ({ user, setResponsible, setShowModal, onRemove, pointer }) => 
   return (
     <CardContainer onClick={handleClick} pointer={pointer}>
       {!pointer ? (
-        <DeletaButton
-          onClick={() => {
+        <DeleteButton
+          onRemove={() => {
             onRemove(user.id);
           }}
-        >
-          X
-        </DeletaButton>
+        />
       ) : (
         ""
       )}
@@ -46,8 +44,7 @@ const CardContainer = styled.div`
     `
     cursor: pointer;
   `}
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  ${cardBorderShadow};
   margin: 1rem;
   position: relative;
 `;

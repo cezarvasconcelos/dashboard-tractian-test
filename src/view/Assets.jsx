@@ -1,5 +1,5 @@
 import ViewContainer from "containers/ViewContainer";
-import { AssetCard } from "components";
+import { AddButton, AssetCard } from "components";
 import { useDispatch, useSelector } from "react-redux";
 import { filterListByUnitId } from "util";
 import { assetDeleteFromList, deleteAsset } from "redux/assets";
@@ -22,13 +22,8 @@ const Assets = () => {
   return (
     <ViewContainer>
       <ContainerButton>
-        <ButtonAdd onClick={() => setShowModal(true)}>Adicionar Ativo</ButtonAdd>
-        <Modal
-          active={showModal}
-          hideModal={() => setShowModal(false)}
-          title="Adicionar nova máquina"
-          footer={<button>Footer Button</button>}
-        >
+        <AddButton setShowModal={setShowModal} text={"Adicionar Ativo"} />
+        <Modal active={showModal} hideModal={() => setShowModal(false)} title="Adicionar nova máquina">
           <NewAssetForm setShowModalParent={setShowModal} />
         </Modal>
       </ContainerButton>
@@ -39,16 +34,6 @@ const Assets = () => {
     </ViewContainer>
   );
 };
-
-const ButtonAdd = styled.button`
-  flex-basis: 30%;
-  margin-bottom: 0.4rem;
-  border: none;
-  border-radius: 5px;
-  &:hover {
-    background: #4e7bdb81;
-  }
-`;
 
 const ContainerButton = styled.div`
   ${displayFlexCenter};

@@ -1,4 +1,5 @@
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
+import { DeleteButton, DetalhesButton } from "components";
+import { cardBorderShadow, displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import { useState } from "react";
 import styled from "styled-components";
 import AssetDetails from "./AssetDetails";
@@ -6,9 +7,6 @@ import HealthStatus from "./HealthStatus";
 import Modal from "./Modal";
 
 const AssetCard = ({ asset, onRemove }) => {
-  const openModal = (set) => {
-    set((prev) => !prev);
-  };
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -18,51 +16,47 @@ const AssetCard = ({ asset, onRemove }) => {
           <Thumbnail src={asset.image} alt={"image of " + asset.model} />
         </CardLeft>
         <CardRight>
+          <DeleteButton
+            onRemove={() => {
+              onRemove(asset.id);
+            }}
+          />
           <AssetName>{asset.name}</AssetName>
           <HealthStatus healthscore={asset.healthscore} status={asset.status} />
           <MoreInfo>
-            <button
-              onClick={() => {
-                openModal(setShowModal);
-              }}
-            >
-              Info
-            </button>
-
-            <button
-              onClick={() => {
-                onRemove(asset.id);
-              }}
-            >
-              deletaAsset
-            </button>
+            <DetalhesButton setShowModal={setShowModal} text={"Detalhes/Editar"} />
           </MoreInfo>
         </CardRight>
       </AssetCardContainer>
 
-      <Modal active={showModal} hideModal={() => setShowModal(false)} title="Máquina">
+      <Modal active={showModal} hideModal={() => setShowModal(false)} title={"Equipamento - " + asset.name}>
         <AssetDetails asset={asset} />
       </Modal>
     </>
   );
 };
 
-const CardLeft = styled.div``;
-
+const CardLeft = styled.div`
+  padding: 0 0.3rem;
+`;
+// const CustomDeleteButton = styled(DeleteButton)`
+//   right: 0.7rem;
+//   top: 0.6rem;
+// `;
 const CardRight = styled.div`
   ${displayFlex};
   justify-content: space-around;
   flex-wrap: wrap;
+  position: relative;
+  padding: 1rem 0.3rem;
 `;
 const AssetCardContainer = styled.div`
   ${displayFlexCenter};
-
-  outline: 1px solid black;
+  ${cardBorderShadow};
   margin: 0.2rem;
 
   @media (min-width: ${(props) => props.theme.sizes.breakPointMedium}) {
     width: 400px;
-    /* height: 300px; */
   }
 `;
 

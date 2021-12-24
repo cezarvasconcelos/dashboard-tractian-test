@@ -1,4 +1,4 @@
-import { displayFlexCenter } from "css/styles";
+import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 import styled from "styled-components";
 
 const Modal = ({ title, footer, children, active, hideModal }) => {
@@ -69,9 +69,12 @@ const ModalContainer = styled.div`
 `;
 
 const ModalBody = styled.div`
+  ${displayFlexColumn};
+  align-items: center;
   overflow-y: auto;
   padding: 30px 10px;
   position: relative;
+  width: 100%;
 `;
 
 const ModalHeader = styled.div`

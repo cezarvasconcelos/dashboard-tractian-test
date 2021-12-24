@@ -5,5 +5,6 @@ export const InputLabel = styled.span`
   font-size: 1rem;
   line-height: 1rem;
   letter-spacing: 0.1px;
+  padding-bottom: 0.2rem;
   color: ${(props) => props.theme.textColor};
 `;
