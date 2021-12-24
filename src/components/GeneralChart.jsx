@@ -98,7 +98,7 @@ const PieChart = ({ unitId, listAssets }) => {
         slicedOffset: 0,
         data: [
           {
-            name: `Funcionando (${totals.inOperation})`,
+            name: `Operacional (${totals.inOperation})`,
             color: theme.operationColor,
             y: totals.inOperation,
           },
@@ -108,7 +108,7 @@ const PieChart = ({ unitId, listAssets }) => {
             y: totals.inAlert,
           },
           {
-            name: `Paradas (${totals.inDowntime})`,
+            name: `Interrompido (${totals.inDowntime})`,
             color: theme.downtimeColor,
             y: totals.inDowntime,
           },

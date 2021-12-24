@@ -30,7 +30,7 @@ const AssetCard = ({ asset, onRemove }) => {
       </AssetCardContainer>
 
       <Modal active={showModal} hideModal={() => setShowModal(false)} title={"Equipamento - " + asset.name}>
-        <AssetDetails asset={asset} />
+        <AssetDetails asset={asset} setParentModal={setShowModal} />
       </Modal>
     </>
   );

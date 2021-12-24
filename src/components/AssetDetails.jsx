@@ -10,7 +10,7 @@ import HealthStatus from "./HealthStatus";
 import { useReducer } from "react";
 import { updateAsset, updateAssetFromList } from "redux/assets";
 
-const AssetDetails = ({ asset }) => {
+const AssetDetails = ({ asset, setParentModal }) => {
   const listUsers = useSelector((state) => state.users.listUsers);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
@@ -61,10 +61,11 @@ const AssetDetails = ({ asset }) => {
     newAsset.sensors = sensors;
     newAsset.responsible = responsible;
     newAsset.specifications = { maxTemp, power, rpm };
-    console.log("O mais novo asset");
-    console.log(event);
+    // console.log("O mais novo asset");
+    // console.log(event);
     onUpdate(newAsset);
-    setShowModal(false);
+    setParentModal(false);
+    alert("Ativo atualizado!");
   };
   return (
     <>
