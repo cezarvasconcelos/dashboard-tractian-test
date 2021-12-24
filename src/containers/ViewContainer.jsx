@@ -4,7 +4,7 @@ const ViewContainer = styled.div`
   ${displayFlexCenter};
   flex-wrap: wrap;
   height: 100vh;
-  width: 90%;
+  width: 95%;
   overflow: scroll;
 `;
 

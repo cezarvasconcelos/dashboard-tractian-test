@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AlertIcon, DowntimeIcon, OperationIcon } from "./icon";
 
-const AssetStatus = ({ status }) => {
+const AssetStatus = ({ status, className }) => {
   const checkStatus = () => {
     switch (status) {
       case "inAlert":
@@ -33,10 +33,10 @@ const AssetStatus = ({ status }) => {
     }
   };
 
-  return <SomeDiv>{checkStatus()}</SomeDiv>;
+  return <Container className={className}>{checkStatus()}</Container>;
 };
 
-const SomeDiv = styled.div`
+const Container = styled.div`
   ${displayFlexCenter};
   /* width: 20px; */
   /* height: 20px; */

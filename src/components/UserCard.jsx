@@ -2,10 +2,17 @@ import { UserIcon } from "components/icon";
 import { displayFlexCenter } from "css/styles";
 import styled from "styled-components";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, setResponsible, setShowModal }) => {
   // const [currentUser, setCurrentUser] = useState(users);
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (setResponsible) {
+      setResponsible(user);
+      setShowModal(false);
+    }
+  };
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick} pointer>
       <UserAvatar />
       <UserName>{user.name}</UserName>
       <UserEmail>{user.email}</UserEmail>
@@ -20,6 +27,11 @@ const CardContainer = styled.div`
   heigth: 200px;
   outline: 1px solid blue;
   padding: 0.5rem 0;
+  ${({ pointer }) =>
+    pointer &&
+    `
+    cursor: pointer;
+  `}
 `;
 
 const UserAvatar = styled(UserIcon)`

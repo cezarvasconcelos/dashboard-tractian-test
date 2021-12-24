@@ -79,10 +79,16 @@ const ModalHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   color: #303742;
-  padding: 20px 5px 10px 5px;
+  padding: 20px 5px 0 5px;
+  @media (max-width: ${(props) => props.theme.sizes.breakPointBig}) {
+    font-size: 1.3rem;
+  }
 `;
 
 const ModalTitle = styled.span`
   font-size: 30px;
   font-weight: 500;
+  @media (max-width: ${(props) => props.theme.sizes.breakPointBig}) {
+    font-size: 1.3rem;
+  }
 `;

@@ -3,11 +3,11 @@ import { FormText } from "./FormText";
 import { InputLabel } from "./InputLabel";
 import { Input } from "./Input";
 
-const InputForm = ({ name, placeHolder, defaultValue, text, className }) => {
+const InputForm = ({ name, label, placeHolder, value, onChange, text, className }) => {
   return (
     <InputContainer className={className}>
-      <InputLabel>{name}</InputLabel>
-      <Input placeholder={placeHolder} defaultValue={defaultValue} />
+      <InputLabel>{label}</InputLabel>
+      <Input placeholder={placeHolder} value={value} name={name} onChange={onChange} />
       <FormText>{text}</FormText>
     </InputContainer>
   );
