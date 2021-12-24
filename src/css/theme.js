@@ -5,7 +5,6 @@ export const theme = {
 	menuTextColor: '#FFFFFF',
 	backgroundColorDefault: '#FFFFFF',
 	iconMenuColor: '#51b9ff',
-	infoTextColor: '',
 	alertColor: '#fac000',
 	operationColor: '#08fa00',
 	downtimeColor: '#fa4f00',

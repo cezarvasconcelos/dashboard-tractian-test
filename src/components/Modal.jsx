@@ -1,4 +1,4 @@
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
+import { displayFlexCenter, displayFlexColumn } from "css/styles";
 import styled from "styled-components";
 
 const Modal = ({ title, footer, children, active, hideModal }) => {

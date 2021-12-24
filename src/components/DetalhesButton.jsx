@@ -1,7 +1,7 @@
 import { cardBorderShadow, displayFlexCenter } from "css/styles";
 import React from "react";
 import styled from "styled-components";
-import { AddIcon, EditIcon } from "./icon";
+import { EditIcon } from "./icon";
 
 const DetalhesButton = ({ setShowModal, text, className }) => {
   return (

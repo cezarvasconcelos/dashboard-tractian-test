@@ -1,8 +1,7 @@
-import { AssetsInfo, GeneralChart, UsersInfo } from "components";
+import { GeneralChart } from "components";
 import ViewContainer from "containers/ViewContainer";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { filterListByUnitId } from "util";
 
 const Overview = () => {
   const unitId = useSelector((state) => state.current.unitSelected);

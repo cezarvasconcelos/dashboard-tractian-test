@@ -64,8 +64,5 @@ const UserName = styled.span`
 const UserEmail = styled.span`
   grid-area: 2 / 2 / 3 / 3;
 `;
-const DeletaButton = styled.button`
-  position: absolute;
-  right: 0;
-`;
+
 export default UserCard;
