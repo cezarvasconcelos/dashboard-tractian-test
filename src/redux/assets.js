@@ -36,7 +36,7 @@ const slice = createSlice({
 			const assetsCopy = [...assets.listAssets];
 			const targetIndex = assetsCopy.findIndex(f => f.id === action.payload.id);
 			assetsCopy[targetIndex] = action.payload;
-
+			assets.listAssets = assetsCopy;
 			console.log("item atualizado, na teoria");
 		},
 
