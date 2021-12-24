@@ -22,7 +22,7 @@ const slice = createSlice({
 			users.loading = false;
 		},
 
-		usersDeleteFromList: (users, action) => {
+		userDeleteFromList: (users, action) => {
 			alert('User excluído');
 			users.listUsers = users.listUsers.filter((element) => element.id !== action.payload);
 		},
@@ -45,9 +45,14 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-const { usersRequested, usersReceived, usersRequestFailed, userDeleteFromList, updateUserFromList, newUser } = slice.actions;
+export const { usersRequested, usersReceived, usersRequestFailed, userDeleteFromList, updateUserFromList, newUser } = slice.actions;
 
 const url = "/users";
+
+
+// #TODO
+// refatorar lógica para abstração,das chamadas de API
+// código duplicado
 
 export const loadUsers = () => (dispatch) => {
 	return dispatch(

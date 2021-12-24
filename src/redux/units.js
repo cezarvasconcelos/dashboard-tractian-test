@@ -14,7 +14,7 @@ const slice = createSlice({
 		},
 
 		unitsReceived: (units, action) => {
-			units.listUnits = [{ id: 0, name: "Todos" }, ...action.payload];
+			units.listUnits = [...action.payload];
 			units.loading = false;
 		},
 
