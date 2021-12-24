@@ -1,104 +1,88 @@
+import { displayFlexCenter } from "css/styles";
 import styled from "styled-components";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
 
-const Modal = ({ showModal, setShowModal, children, id }) => {
-  // para utilizar o modal, é necessário que seja setado o state desse modal
-  // no componente pai, pois ele quem terá o controle se deve abrir ou fechar
-  // #TODO :
-  // deve haver uma implementação melhor para lidar com esse estado
-
-  const modalRef = useRef();
-
-  const closeModal = (e) => {
-    if (modalRef.current === e.target || e.target.id === id) {
-      setShowModal(false);
-    }
-  };
-
-  const keyPress = useCallback(
-    (e) => {
-      if (e.key === "Escape" && showModal) {
-        setShowModal(false);
-      }
-    },
-    [setShowModal, showModal]
-  );
-
-  useEffect(() => {
-    document.addEventListener("keydown", keyPress);
-    return () => document.removeEventListener("keydown", keyPress);
-  }, [keyPress]);
-
+const Modal = ({ title, footer, children, active, hideModal }) => {
   return (
     <>
-      {showModal ? (
-        <Background onClick={closeModal} ref={modalRef}>
-          <ModalWrapper showModal={showModal}>
+      {active && (
+        <ModalBlock>
+          <ModalOverlay onClick={() => hideModal()}></ModalOverlay>
+          <ModalContainer>
             <ModalHeader>
-              <CloseIcon>
-                <span id={id} onClick={closeModal}>
-                  x
-                </span>
-              </CloseIcon>
+              <ModalTitle>{title}</ModalTitle>
+              <ModalClose onClick={() => hideModal()}>X</ModalClose>
             </ModalHeader>
             <ModalBody>{children}</ModalBody>
-            <ModalFooter />
-          </ModalWrapper>
-        </Background>
-      ) : null}
+          </ModalContainer>
+        </ModalBlock>
+      )}
     </>
   );
 };
-
-const Background = styled.div`
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-`;
-
-const ModalWrapper = styled.div`
-  width: 90%;
-  height: 85%;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  position: absolute;
-  z-index: 10;
-  border-radius: 10px;
-  overflow: scroll;
-`;
-
-export const ModalBody = styled.div`
-  ${displayFlexColumn};
-  overflow: scroll;
-`;
-
-export const ModalFooter = styled.div`
-  ${displayFlexCenter};
-`;
-
-export const ModalHeader = styled.div`
-  ${displayFlexCenter};
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-`;
-
-const CloseIcon = styled.div`
-  ${displayFlex};
-  justify-content: flex-end;
-  width: 100%;
-  cursor: pointer;
-  margin-right: 1rem;
-  span {
-    font-weight: 900;
-    font-size: 2rem;
-  }
-`;
-
 export default Modal;
+
+const ModalBlock = styled.div`
+  ${displayFlexCenter}
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 0.4rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  opacity: 1;
+  z-index: 400;
+`;
+
+const ModalOverlay = styled.a`
+  background: rgba(53, 54, 54, 0.75);
+  bottom: 0;
+  cursor: default;
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
+
+const ModalClose = styled.a`
+  float: right !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 900;
+`;
+
+const ModalContainer = styled.div`
+  background: #ffffff;
+  border-radius: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 75vh;
+  max-width: 850px;
+  padding: 0 0.8rem;
+  width: 100%;
+  animation: slide-down 0.2s ease 1;
+  border-radius: 5px;
+  z-index: 1;
+  box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
+`;
+
+const ModalBody = styled.div`
+  overflow-y: auto;
+  padding: 30px 10px;
+  position: relative;
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #303742;
+  padding: 20px 5px 10px 5px;
+`;
+
+const ModalTitle = styled.span`
+  font-size: 30px;
+  font-weight: 500;
+`;
