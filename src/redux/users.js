@@ -32,12 +32,12 @@ const slice = createSlice({
 			const targetIndex = usersCopy.findIndex(f => f.id === action.payload.id);
 			usersCopy[targetIndex] = action.payload;
 			users.listUsers = usersCopy;
-			console.log("item atualizado, na teoria");
+			// console.log("item atualizado, na teoria");
 		},
 
 		newUser: (users, action) => {
 			users.listUsers = [action.payload, ...users.listUsers];
-			console.log(action.payload)
+			// console.log(action.payload)
 			users.loading = false;
 		},
 	},

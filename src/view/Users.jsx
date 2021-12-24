@@ -20,7 +20,7 @@ const Users = ({ users }) => {
     dispatch(userDeleteFromList(idUser));
   };
 
-  console.log(users);
+  // console.log(users);
   return (
     <ViewContainer>
       <ContainerButton>

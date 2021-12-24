@@ -12,7 +12,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   let menus = ["Geral", "Assets", "Usuários", "Unidades"];
   const onMenuSelected = (menu) => {
-    console.log(menu);
+    // console.log(menu);
     dispatch(selectMenu(menu));
   };
 

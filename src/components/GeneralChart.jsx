@@ -19,7 +19,7 @@ const PieChart = ({ unitId, listAssets }) => {
     let newTotals = { ...totals };
     let listFiltered = filterListByUnitId(listAssets, unitId);
     newTotals.assets = listFiltered.length;
-    console.log(newTotals);
+    // console.log(newTotals);
     listFiltered.forEach((asset) => {
       switch (asset["status"]) {
         case "inOperation":
