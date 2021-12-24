@@ -105,7 +105,7 @@ const AssetDetails = ({ asset }) => {
       <Modal active={showModal} hideModal={() => setShowModal(false)} title="Selecione o responsável pela máquina">
         {/* deve mostrar apenas o responsável da empresa referente ao asset clicado */}
         {filterListByUnitId(listUsers, asset.unitId).map((user) => {
-          return <UserCard user={user} key={user.id} setShowModal={setShowModal} setResponsible={setResponsible} />;
+          return <UserCard user={user} key={user.id} setShowModal={setShowModal} setResponsible={setResponsible} pointer />;
         })}
       </Modal>
     </>

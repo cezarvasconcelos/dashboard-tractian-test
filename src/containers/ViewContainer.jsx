@@ -5,7 +5,7 @@ const ViewContainer = styled.div`
   flex-wrap: wrap;
   height: 100vh;
   width: 95%;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export default ViewContainer;

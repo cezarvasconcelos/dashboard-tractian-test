@@ -26,8 +26,6 @@ function App() {
         </LeftContainer>
         <RightContainer>
           <Header />
-          {/* <Overview assets={unitAssets} users={unitUsers} units={units} info={unitSelected} /> */}
-
           <Routes>
             <Route path={"/"} element={<Overview />} />
             <Route path="assets" element={<Assets />} />

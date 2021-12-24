@@ -40,7 +40,7 @@ const AssetCard = ({ asset, onRemove }) => {
         </CardRight>
       </AssetCardContainer>
 
-      <Modal active={showModal} hideModal={() => setShowModal(false)} title="Máquina" footer={<button>Footer Button</button>}>
+      <Modal active={showModal} hideModal={() => setShowModal(false)} title="Máquina">
         <AssetDetails asset={asset} />
       </Modal>
     </>

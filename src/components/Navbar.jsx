@@ -3,18 +3,18 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import { selectMenu } from "redux/features/unitSlice";
+import { selectMenu } from "redux/current";
 import styled from "styled-components";
 import { UserIcon, AssetsIcon, UnitsIcon, OverviewIcon } from "./icon";
 
 const logoTractian = process.env.PUBLIC_URL + "/assets/images/tractianLogo.png";
 
 const Navbar = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   let menus = ["Geral", "Assets", "Usuários", "Unidades"];
   const onMenuSelected = (menu) => {
     console.log(menu);
-    // dispatch(selectMenu(menu));
+    dispatch(selectMenu(menu));
   };
 
   return (

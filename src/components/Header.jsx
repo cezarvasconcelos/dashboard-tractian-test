@@ -9,7 +9,7 @@ import { ArrowDown } from "./icon";
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const units = useSelector((state) => state.units.listUnits);
+  const units = [{ id: 0, name: "Todos" }, ...useSelector((state) => state.units.listUnits)];
   const [selectedUnit, setSelectedUnit] = useState(null);
   const menuTitle = useSelector((state) => state.current.menuSelected);
 
