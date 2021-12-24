@@ -9,10 +9,6 @@ const slice = createSlice({
 		testNumber: 0,
 	},
 
-	setAssetToDelete: () => {
-		console.log(this)
-	},
-
 	reducers: {
 		assetsRequested: (assets, action) => {
 			assets.loading = true;
@@ -69,8 +65,7 @@ export const loadAssets = () => (dispatch) => {
 };
 
 export const updateAsset = (asset) => (dispatch) => {
-	console.log("no update")
-	console.log(asset);
+
 	return dispatch(
 		apiCallBegan({
 			url: `${url}/${asset.id}`,
@@ -87,20 +82,17 @@ export const updateAsset = (asset) => (dispatch) => {
 //entender o que está ocorrendo exatamente no reducer
 //acredito que isso quebra a premissa de um reducer ser uma função pura
 export const deleteAsset = (idAsset) => (dispatch) => {
-	console.log("no delete")
 	return dispatch(
 		apiCallBegan({
 			url: `${url}/${idAsset}`,
 			method: 'DELETE',
 			onStart: assetsRequested.type,
-			// onSuccess: assetDeletedSucess.type,
 			onError: assetsRequestFailed.type,
 		})
 	);
 };
 
 export const addAsset = (asset) => (dispatch) => {
-	console.log("no addAsset")
 	return dispatch(
 		apiCallBegan({
 			url,

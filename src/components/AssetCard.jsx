@@ -1,10 +1,7 @@
 import { displayFlex, displayFlexCenter, displayFlexColumn } from "css/styles";
-import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import AssetDetails from "./AssetDetails";
-import AssetStatus from "./AssetStatus";
 import HealthStatus from "./HealthStatus";
 import Modal from "./Modal";
 
@@ -13,7 +10,6 @@ const AssetCard = ({ asset, onRemove }) => {
     set((prev) => !prev);
   };
   const [showModal, setShowModal] = useState(false);
-  const [updatedAsset, setUpdatedAsset] = useState();
 
   return (
     <>
@@ -45,7 +41,7 @@ const AssetCard = ({ asset, onRemove }) => {
       </AssetCardContainer>
 
       <Modal active={showModal} hideModal={() => setShowModal(false)} title="Máquina" footer={<button>Footer Button</button>}>
-        <AssetDetails asset={asset} setUpdatedAsset={setUpdatedAsset} />
+        <AssetDetails asset={asset} />
       </Modal>
     </>
   );
