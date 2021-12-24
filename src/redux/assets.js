@@ -41,7 +41,7 @@ const slice = createSlice({
 		},
 
 		newAsset: (assets, action) => {
-			assets.listAssets = [...assets.listAssets, action.payload];
+			assets.listAssets = [action.payload, ...assets.listAssets];
 			console.log(action.payload)
 			assets.loading = false;
 		},
